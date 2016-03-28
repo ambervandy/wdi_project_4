@@ -3,11 +3,11 @@ var app = angular.module('weekendApp', []);
 // USER CONTROLLER
 app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
-	// variable for this to use
+	// VAR FOR THIS
 	var self = this;
 
 
-	// get data for all users
+	// GET ALL USER DATA
 	$http.get('/users').then(
 		// success
 		function(response) {
