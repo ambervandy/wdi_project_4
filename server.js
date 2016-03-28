@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var port = process.env.PORT || 3000;
+var Yelp = require('yelp');
 
 // MIDDLEWARE
 app.use(express.static('public'));
@@ -17,7 +18,9 @@ app.use(methodOverride('_method'));
 
 // CONTROLLERS
 var usersController = require('./controllers/usersController');
+var yelpController = require('./controllers/yelpController');
 app.use('/users', usersController);
+app.use('/yelp', yelpController);
 
 
 // CONNECTION

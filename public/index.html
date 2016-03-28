@@ -15,9 +15,15 @@
 	<h1>THIS IS MY INDEX PAGE</h1>
 
 	<!-- TESTING TO GET DATA FROM YELP.COM -->
-	<form ng-submit="ctrl.getYelpData(input)">
-		<input type="text" placeholder="Choose NYC Neighborhood" ng-model="ctrl.input"></br>
-		<button ng-click="ctrl.searchYelp()">GET ME A RANDOM DAY</button>
+	<form ng-submit="ctrl.searchByNeighb(input)">
+		<input type="text" ng-model="ctrl.input" placeholder="LET ME KNOW WHAT NEIGHBORHOOD">
+		<button>GET ME ACTIVITY IN THIS NEIGHBORHOOD</button>
+	</form>
+
+	<h3>-- OR --</h3>
+
+	<form>
+		<button ng-click="ctrl.searchYelp()">GET ME A RANDOM ACTIVITY</button>
 	</form>
 
 
