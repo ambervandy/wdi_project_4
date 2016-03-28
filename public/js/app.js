@@ -11,6 +11,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	$http.get('/users').then(
 		// success
 		function(response) {
+			console.log(response)
 			self.users = response.data;
 		}, 
 		// error
@@ -19,6 +20,50 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		}
 	);
 
+	
 
 
 }]); // <--------------------------------------------------------------------- END OF CONTROLLER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
