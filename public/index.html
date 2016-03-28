@@ -1,0 +1,27 @@
+<html ng-app="weekendApp">
+<head>
+	<title>Weekend App</title>
+	<!-- FAVICON -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- GOOGLE FONTS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js" charset="utf-8"></script>
+	<!-- ANGULAR ANIMATE -->
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+
+<body ng-controller="userController as ctrl">
+
+	<h1>THIS IS MY INDEX PAGE</h1>
+
+	<!-- TESTING TO GET DATA FROM YELP.COM -->
+	<form ng-submit="ctrl.getYelpData(input)">
+		<input type="text" placeholder="Choose NYC Neighborhood" ng-model="ctrl.input"></br>
+		<button ng-click="ctrl.searchYelp()">GET ME A RANDOM DAY</button>
+	</form>
+
+	<!-- LIST ALL USERS -->
+	
+
+</body>
+</html>
