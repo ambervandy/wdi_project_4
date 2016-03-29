@@ -14,7 +14,10 @@ var yelp = new Yelp({
 
 
 // empty object to capture lat and long from activity for nearby brunch and drinks
-var activityLatLong = {};
+// var activityLatLong = {};
+
+// empty string containing the address of the activity
+var activityAdd = '';
 
 
 // RANDOM ACTIVITY REQUEST 
@@ -23,7 +26,7 @@ router.get('/random', function(req, res) {
 	// ACTIVITY SEARCH
 	yelp.search(
 		// search params
-		{ category_filter: 'active', 
+		{ category_filter: 'fleamarkets,walkingtours,parks',
 		  location: 'New York',
 		  sort: 2,
 		  limit: 10 }
@@ -37,22 +40,27 @@ router.get('/random', function(req, res) {
 			console.log('                 BEGINNING OF ACTIVITY                ');
 			console.log('======================================================');
 	  		console.log(data.businesses[num]);
-	  		console.log(data.businesses[num].location.coordinate.latitude);
-	  		console.log(data.businesses[num].location.coordinate.longitude);
+	  		// console.log(data.businesses[num].location.coordinate.latitude);
+	  		// console.log(data.businesses[num].location.coordinate.longitude);
 
 	  		// add lat and long of random activity to activityLatLong object for later use
-	  		activityLatLong.latitude = data.businesses[num].location.coordinate.latitude;
-	  		activityLatLong.longitude = data.businesses[num].location.coordinate.longitude;
-	  		console.log(activityLatLong);
+	  		// activityLatLong.latitude = data.businesses[num].location.coordinate.latitude;
+	  		// activityLatLong.longitude = data.businesses[num].location.coordinate.longitude;
+	  		// console.log(activityLatLong);
+
+
+	  		// get address for activity to add to address string
+	  		activityAdd = data.businesses[num].location.display_address.join(', ');
+	  		console.log(activityAdd);
 
 	  		console.log('======================================================');
 			console.log('                    END OF ACTIVITY                   ');
 			console.log('======================================================');
 
 			// SET OFF BRUNCH, DRINKS, AND DINNER FUNCTIONS
-			brunch(activityLatLong);
-			drinks(activityLatLong);
-			dinner(activityLatLong);
+			brunch(activityAdd);
+			drinks(activityAdd);
+			dinner(activityAdd);
 
 			// send back json data
 			res.send(data.businesses[num]);
@@ -95,14 +103,18 @@ router.get('/neighborhood/:id', function(req, res) {
 			console.log('======================================================');
 
 			// add lat and long of random activity to activityLatLong object for later use
-	  		activityLatLong.latitude = data.businesses[num].location.coordinate.latitude;
-	  		activityLatLong.longitude = data.businesses[num].location.coordinate.longitude;
-	  		console.log(activityLatLong);
+	  		// activityLatLong.latitude = data.businesses[num].location.coordinate.latitude;
+	  		// activityLatLong.longitude = data.businesses[num].location.coordinate.longitude;
+	  		// console.log(activityLatLong);
+
+	  		// get address for activity to add to address string
+	  		activityAdd = data.businesses[num].location.display_address.join(', ');
+	  		console.log(activityAdd);
 
 			// SET OFF BRUNCH, DRINKS, AND DINNER FUNCTIONS
-			brunch(activityLatLong);
-			drinks(activityLatLong);
-			dinner(activityLatLong);
+			brunch(activityAdd);
+			drinks(activityAdd);
+			dinner(activityAdd);
 
 			// need to figure out how to send back json data
 			// res.send(data.businesses[num]);
@@ -115,16 +127,13 @@ router.get('/neighborhood/:id', function(req, res) {
 
 
 // BRUNCH
-var brunch = function(activityLatLong) {
-
-	latitude = activityLatLong.latitude
-	longitude = activityLatLong.longitude
+var brunch = function(activityAdd) {
+	console.log('This is the activity address: ' + activityAdd);
 
 	yelp.search(
 		// search params
 		{ term: 'brunch',
-		  location: 'New York',
-		  cll: latitude,longitude,
+		  location: activityAdd,
 		  sort: 2,
 		  limit: 10 }
 		  // success
@@ -153,15 +162,13 @@ var brunch = function(activityLatLong) {
 
 
 // DRINKS
-var drinks = function(activityLatLong) {
-
-	latitude = activityLatLong.latitude
-	longitude = activityLatLong.longitude
+var drinks = function(activityAdd) {
+	console.log('This is the activity address: ' + activityAdd);
 
 	yelp.search(
 		// search params
-		{ term: 'cocktails', 
-		  cll: latitude,longitude,
+		{ term: 'bars',
+		  location: activityAdd,
 		  sort: 2,
 		  limit: 10 }
 		  // success
@@ -190,15 +197,13 @@ var drinks = function(activityLatLong) {
 
 
 // DINNER
-var dinner = function(activityLatLong) {
-
-	latitude = activityLatLong.latitude
-	longitude = activityLatLong.longitude
+var dinner = function(activityAdd) {
+	console.log('This is the activity address: ' + activityAdd);
 
 	yelp.search(
 		// search params
-		{ term: 'dinner', 
-		  cll: latitude,longitude,
+		{ term: 'dinner',
+		  location: activityAdd,
 		  sort: 2,
 		  limit: 10 }
 		  // success
@@ -233,7 +238,7 @@ module.exports = router;
 
 
 
-
+// amusementparks,aquariums,archery,battingcages,beaches,bowling,challengecourses,climbing,discgolf,escapegames,gokarts,golf,hiking,lasertag,mini_golf,mountainbiking,paintball,parks,rafting,recreation,rock_climbing,skatingrinksswimmingpools,tenniswaterparks,zoos,arcades,fencing,galleries,bingo,gardens,cabaret,casinos,farms,festivals,hauntedhouses,jazzandblues,museums,observatories,paintandsip,planetarium,wineries,winetastingroom,hookah_bars,karaoke,artclasses,cheesetastingclasses,winetastingclasses,wineries,architecturaltours,arttours,bustours,foodtours,historicaltours,walkingtours,winetours,fleamarkets', 
 
 
 
