@@ -61,7 +61,6 @@ router.get('/neighborhood/:id', function(req, res) {
 		// search params
 		{ category_filter: 'fleamarkets,walkingtours,parks,amusementparks,aquariums,archery,battingcages,beaches,bowling,challengecourses,climbing,discgolf,escapegames,gokarts,golf,hiking,lasertag,mini_golf,mountainbiking,paintball,parks,recreation,rock_climbing,skatingrinks,swimmingpools,tennis,waterparks,zoos,arcades,bingo,gardens,cabaret,casinos,farms,festivals,hauntedhouses,jazzandblues,museums,observatories,paintandsip,planetarium,hookah_bars,karaoke,artclasses,wineries,arttours,bustours,foodtours,winetours', 
 		  location: location,
-		  // radius_filter: 10,
 		  sort: 2,
 		  limit: 20 }
 		  // success
@@ -96,10 +95,11 @@ router.get('/brunch/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ term: 'brunch',
-		  location: req.params.id,
-		  sort: 2,
-		  limit: 20 }
+		{ 	term: 'brunch',
+		  	location: req.params.id,
+		  	radius_filter: 1500,
+		  	sort: 2,
+		  	limit: 20 }
 		  // success
 		).then(function (data) {
 
@@ -130,10 +130,11 @@ router.get('/drinks/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ term: 'bars',
-		  location: req.params.id,
-		  sort: 2,
-		  limit: 20 }
+		{ 	term: 'bars',
+		  	location: req.params.id,
+		  	radius_filter: 1500,
+		  	sort: 2,
+		  	limit: 20 }
 		  // success
 		).then(function (data) {
 
@@ -164,10 +165,11 @@ router.get('/dinner/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ term: 'dinner',
-		  location: req.params.id,
-		  sort: 2,
-		  limit: 20 }
+		{ 	term: 'dinner',
+		  	location: req.params.id,
+		  	radius_filter: 1500,
+		  	sort: 2,
+		  	limit: 20 }
 		  // success
 		).then(function (data) {
 

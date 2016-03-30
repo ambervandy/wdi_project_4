@@ -6,6 +6,10 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	// VAR FOR THIS
 	var self = this;
 
+	// VAR FOR OPEN TABLE
+	var otBrunchLink = '';
+	var otDinnerLink = '';
+
 
 	// GET ALL USER DATA
 	$http.get('/users').then(
@@ -89,6 +93,10 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response.data);
 			// send data to view
 			self.brunch = response.data.brunch;
+
+			// create single string for opentable link
+			nameBrunch = response.data.brunch.name.split(' ').join('-');
+			self.otBrunchLink = 'http://www.opentable.com/' + nameBrunch;
 		},
 		// error
 		function(err) {
@@ -135,12 +143,38 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response.data);
 			// send data to view
 			self.dinner = response.data.dinner;
+
+			// create single string for opentable link
+			nameDinner = response.data.dinner.name.split(' ').join('-');
+			self.otDinnerLink = 'http://www.opentable.com/' + nameDinner;
 		},
 		// error
 		function(err) {
 			console.log("ERROR");
 		});
 	};
+
+
+	// OPENTABLE GET REQUEST BRUNCH
+	// this.dinnerRes = function(input) {
+
+	// 	var url = 'http://' + input;
+	// 	console.log('URL: ' + url);
+
+	// 	// $http({
+	// 	// 	method: 'GET',
+	// 	// 	url: 'http://' + input
+	// 	// }).then(
+	// 	// // success
+	// 	// function(response) {
+	// 	// 	console.log(response);
+	// 	// },
+	// 	// // error
+	// 	// function(err) {
+	// 	// 	console.log("ERROR");
+	// 	// });
+	// }
+
 
 	
 

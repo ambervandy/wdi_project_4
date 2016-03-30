@@ -41,7 +41,8 @@
 	<h4>BRUNCH</h4>
 	<p>{{ ctrl.brunch.name }}</p>
 	<input type="hidden" id="brunchAddress" value="{{ ctrl.brunch.location.display_address.join(', ') }}">
-	<!-- need to add img of rating when we create the objects holding brunch, dinner, drinks, activity -->
+    <a href="{{ ctrl.otBrunchLink }}"><p>reservation</p></a>	
+    <!-- need to add img of rating when we create the objects holding brunch, dinner, drinks, activity -->
 
 	<h4>ACTIVITY</h4>
 	<p>{{ ctrl.activity.name }}</p>
@@ -54,6 +55,7 @@
 	<h4>DINNER</h4>
 	<p>{{ ctrl.dinner.name }}</p>
 	<input type="hidden" id="dinnerAddress" value="{{ ctrl.dinner.location.display_address.join(', ') }}">
+	<a href="{{ ctrl.otDinnerLink }}"><p>reservation</p></a>
 	
 
 
