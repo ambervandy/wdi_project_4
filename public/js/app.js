@@ -31,6 +31,13 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		// success
 		function(response) {
 			console.log(response.data);
+			// send data to view
+			self.activity = response.data
+
+			var address = response.data.location.display_address.join(', ');
+			self.getBrunch(address);
+			self.getDrinks(address);
+			self.getDinner(address);
 		},
 		// error
 		function(err) {
@@ -51,7 +58,14 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		}).then(
 		// success
 		function(response) {
-			console.log(response.data)
+			console.log(response.data);
+			// send data to view
+			self.activity = response.data
+
+			var address = response.data.location.display_address.join(', ');
+			self.getBrunch(address);
+			self.getDrinks(address);
+			self.getDinner(address);
 		},
 		// error
 		function(err) {
@@ -59,6 +73,74 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		});
 	};
 
+
+	// YELP GET REQUEST - BRUNCH
+	this.getBrunch = function(address) {
+
+		console.log(address);
+		var param = address
+
+		$http({
+			method: 'GET',
+			url: '/yelp/brunch/' + param,
+		}).then(
+		// success
+		function(response) {
+			console.log(response.data);
+			// send data to view
+			self.brunch = response.data.brunch;
+		},
+		// error
+		function(err) {
+			console.log("ERROR");
+		});
+	};
+
+
+	// YELP GET REQUEST - DRINKS
+	this.getDrinks = function(address) {
+
+		console.log(address);
+		var param = address
+
+		$http({
+			method: 'GET',
+			url: '/yelp/drinks/' + param,
+		}).then(
+		// success
+		function(response) {
+			console.log(response.data);
+			// send data to view
+			self.drinks = response.data.drinks;
+		},
+		// error
+		function(err) {
+			console.log("ERROR");
+		});
+	};
+
+
+	// YELP GET REQUEST - DINNER
+	this.getDinner = function(address) {
+
+		console.log(address);
+		var param = address
+
+		$http({
+			method: 'GET',
+			url: '/yelp/dinner/' + param,
+		}).then(
+		// success
+		function(response) {
+			console.log(response.data);
+			// send data to view
+			self.dinner = response.data.dinner;
+		},
+		// error
+		function(err) {
+			console.log("ERROR");
+		});
+	};
 
 	
 
