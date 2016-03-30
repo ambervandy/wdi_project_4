@@ -4,8 +4,14 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var port = process.env.PORT || 3000;
 var Yelp = require('yelp');
+var expressSession = require('express-session');
+var passport = require('passport');
+var session = require('session');
+var port = process.env.PORT || 3000;
+
+require('./config/passport.js')(passport);
+
 
 // MIDDLEWARE
 app.use(express.static('public'));
@@ -13,7 +19,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
+
 // PASSPORT
+app.use(expressSession({ name: 'whut', secret: 'conventional wisdom', saveUninitialized: true, resave: true, proxy: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// ADDS { login: true } TO RES.LOCALS OBJECT
+app.use(function(req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
 
 
 // CONTROLLERS
@@ -24,7 +41,8 @@ app.use('/yelp', yelpController);
 
 
 // CONNECTION
-mongoose.connect('mongodb://localhost:27017/random_weekend');
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/random_weekend';
+mongoose.connect(mongoUri);
 
 
 // LISTENING

@@ -6,9 +6,14 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	// VAR FOR THIS
 	var self = this;
 
+
 	// VAR FOR OPEN TABLE
 	var otBrunchLink = '';
 	var otDinnerLink = '';
+
+
+	// CREATE EMPTY OBJECT TO HOLD USER ID
+	var userObj = {};
 
 
 	// GET ALL USER DATA
@@ -23,6 +28,79 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log("ERROR");
 		}
 	);
+
+
+	// SIGN UP
+	this.signUp = function() {
+		// console.log(this.signUpData);
+		$http({
+			method: 'POST',
+			url: '/users/signup',
+			data: this.signUpData
+		}).then(
+		// success
+		function(response) {
+			console.log(response);
+		});
+	};
+
+
+	// LOGIN
+	this.logIn = function() {
+		console.log("LOGIN function firing");
+		$http({
+			method: 'POST',
+			url: '/users/login',
+			data: this.loginData
+		}).then(
+		// success
+		function(response) {
+			console.log(response);
+		});
+		// ADD ERROR HERE TO BOXES FOR INCORRECT LOGIN
+	};
+
+
+	// IS LOGGED IN
+	this.getUser = function() {
+		$http({
+			method: 'GET',
+			url: '/users/isLoggedIn'
+		}).then(
+		// success
+		function(response) {
+			console.log(response);
+			if (response.data.username != null) {
+				// user is logged in
+				self.user = true;
+				// variable to call in template
+				self.single = response.data;
+				// save user id
+				userObj.id = response.data._id;
+			}
+			else {
+				// user is not logged in
+				self.user = false;
+			}
+		});
+	};
+
+
+	// EVOKE GET USER FUNCTION ON PAGE LOAD
+	this.getUser();
+
+
+	// LOGOUT
+	this.logout = function() {
+		$http({
+			method: 'GET',
+			url: '/users/logout'
+		}).then(
+		// success
+		function(response) {
+			console.log("logged out!");
+		});
+	};
 
 
 	// YELP GET REQUEST (RANDOM ACTIVITY)
