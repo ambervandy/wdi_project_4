@@ -13,9 +13,6 @@ var yelp = new Yelp({
 });
 
 
-// empty object to capture lat and long from activity for nearby brunch and drinks
-// var activityLatLong = {};
-
 
 // empty objects to hold all data to send back to app.js
 var entireDay = {};
@@ -29,7 +26,6 @@ router.get('/random', function(req, res) {
 		// search params
 		{ category_filter: 'fleamarkets,walkingtours,parks,amusementparks,aquariums,archery,battingcages,beaches,bowling,challengecourses,climbing,discgolf,escapegames,gokarts,golf,hiking,lasertag,mini_golf,mountainbiking,paintball,parks,recreation,rock_climbing,skatingrinks,swimmingpools,tennis,waterparks,zoos,arcades,bingo,gardens,cabaret,casinos,farms,festivals,hauntedhouses,jazzandblues,museums,observatories,paintandsip,planetarium,hookah_bars,karaoke,artclasses,wineries,arttours,bustours,foodtours,winetours',
 		  location: 'New York',
-		  sort: 2,
 		  limit: 20 }
 		  // success
 		).then(function (data) {
@@ -41,19 +37,6 @@ router.get('/random', function(req, res) {
 			console.log('                 BEGINNING OF ACTIVITY                ');
 			console.log('======================================================');
 	  		console.log(data.businesses[num]);
-	  		// console.log(data.businesses[num].location.coordinate.latitude);
-	  		// console.log(data.businesses[num].location.coordinate.longitude);
-
-	  		// add lat and long of random activity to activityLatLong object for later use
-	  		// activityLatLong.latitude = data.businesses[num].location.coordinate.latitude;
-	  		// activityLatLong.longitude = data.businesses[num].location.coordinate.longitude;
-	  		// console.log(activityLatLong);
-
-
-	  		// get address for activity to add to address string
-	  		activityAdd = data.businesses[num].location.display_address.join(', ');
-	  		console.log(activityAdd);
-
 	  		console.log('======================================================');
 			console.log('                    END OF ACTIVITY                   ');
 			console.log('======================================================');
