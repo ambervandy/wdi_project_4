@@ -104,17 +104,56 @@
 
 	<!-- DIRECTIONS AND MAP -->
 	<button id="getDirections">GET DIRECTIONS</button>
+	</br>
+	</br>
+	</br>
 
 	<div id="mapContainer">
 		<div id="map"></div>
 	</div>
 
 
+	</br>
+	</br>
+	</br>
 
 	<!-- ADD DAY TO USER -->
 	<form>
 		<button ng-click="ctrl.addDay()">SAVE MY DAY</button>
 	</form>
+
+	</br>
+	</br>
+	</br>
+
+	<!-- SHOW USER TRIPS -->
+	<div id="userDayContainer" ng-if="ctrl.user">
+		<div class="dayWrapper">
+			<ul>	
+				<li ng-repeat="day in ctrl.single.days track by $index">
+					<p>BRUNCH: {{ day.brunch.name }}</p>
+					<p>ACTIVITY: {{ day.activity.name }}</p>
+					<p>DRINKS: {{ day.drinks.name }}</p>
+					<p>DINNER: {{ day.dinner.name }}</p>
+					<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+
 
 </body>
 </html>

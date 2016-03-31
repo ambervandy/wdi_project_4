@@ -273,10 +273,32 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		// success
 		function(response) {
 			console.log(response);
+			// push to days without reloading
+			$scope.ctrl.single.days.push(response.data);
 		},
 		// error
 		function(err) {
 			console.log("ERROR");
+		});
+	};
+
+
+
+	// DELETE DAY FROM USER DAYS
+	this.deleteDay = function(item, index) {
+		console.log("delete is working");
+		console.log(item);
+		console.log(index);
+		$http({
+			method: 'DELETE',
+			url: '/users/delete/' + item._id,
+			data: item
+		}).then(
+		// success
+		function(response) {
+			console.log($scope);
+			// splice from scope
+			$scope.ctrl.single.days.splice(index, 1);
 		});
 	};
 

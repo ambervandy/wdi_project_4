@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user.js');
+var Day = require('../models/day.js');
 var passport = require('passport');
 
 
@@ -47,8 +48,6 @@ router.get('/isLoggedIn', function(req, res) {
 // EDIT USER PROFILE????
 
 
-// DELETE DAY
-
 
 // LOGOUT
 router.get('/logout', function(req, res) {
@@ -58,6 +57,7 @@ router.get('/logout', function(req, res) {
 	req.user = null;
 	res.send(req.user);
 });
+
 
 
 // SHOW USER
@@ -70,12 +70,38 @@ router.put('/:id', function(req, res) {
 	console.log(req.params.id);
 	// make sure user is logged in
 	res.locals.usertrue = (req.user.id == req.params.id);
+	// create new day and set values
+	var newDay = new Day();
+	newDay.brunch = req.body.brunch;
+	newDay.drinks = req.body.drinks;
+	newDay.dinner = req.body.dinner;
+	newDay.activity = req.body.activity;
+	// find user and push newDay into days
 	User.findById(req.params.id, function(err, data) {
-		data.days.push(req.body);
+		data.days.push(newDay);
 		data.save();
-		res.send("saved!");
+		res.send(newDay);
 	});
 });
+
+
+
+// DELETE DAY FROM USER DAYS
+router.delete('/delete/:id', function(req, res) {
+	console.log("REQ.USER: ", req.user);
+	console.log(req.user.id);
+	console.log("REQ.PARAMS: ",req.params.id);
+	User.findById(req.user.id, function(err, user) {
+		for (var i = 0; i < user.days.length; i++) {
+			if (user.days[i]._id == req.params.id) {
+				user.days.splice(i, 1);
+				user.save();
+				res.send('spliced!');
+			};
+		};
+	});
+});
+
 
 
 // DELETE USER
