@@ -16,6 +16,10 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	var userObj = {};
 
 
+	// CREATE EMPTY OBJECT TO HOLD DAY DATA
+	var dayObj = {}; 
+
+
 	// GET ALL USER DATA
 	$http.get('/users').then(
 		// success
@@ -41,6 +45,12 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		// success
 		function(response) {
 			console.log(response);
+			// user is logged in
+			self.user = true;
+			// variable to call in template
+			self.single = response.data;
+			// save user id
+			userObj.id = response.data._id;
 		});
 	};
 
@@ -56,6 +66,12 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		// success
 		function(response) {
 			console.log(response);
+			// user is logged in
+			self.user = true;
+			// variable to call in template
+			self.single = response.data;
+			// save user id
+			userObj.id = response.data._id;
 		});
 		// ADD ERROR HERE TO BOXES FOR INCORRECT LOGIN
 	};
@@ -71,6 +87,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		function(response) {
 			console.log(response);
 			if (response.data.username != null) {
+				console.log("User is logged in!");
 				// user is logged in
 				self.user = true;
 				// variable to call in template
@@ -81,7 +98,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			else {
 				// user is not logged in
 				self.user = false;
-			}
+			};
 		});
 	};
 
@@ -115,6 +132,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response.data);
 			// send data to view
 			self.activity = response.data
+			// add activity to dayObj
+			dayObj.activity = response.data;
 
 			var address = response.data.location.display_address.join(', ');
 			self.getBrunch(address);
@@ -143,6 +162,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response.data);
 			// send data to view
 			self.activity = response.data
+			// add activity to dayObj
+			dayObj.activity = response.data;
 
 			var address = response.data.location.display_address.join(', ');
 			self.getBrunch(address);
@@ -171,6 +192,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response.data);
 			// send data to view
 			self.brunch = response.data.brunch;
+			// add brunch to dayObj
+			dayObj.brunch = response.data;
 
 			// create single string for opentable link
 			nameBrunch = response.data.brunch.name.split(' ').join('-');
@@ -198,6 +221,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response.data);
 			// send data to view
 			self.drinks = response.data.drinks;
+			// add drinks to dayObj
+			dayObj.drinks = response.data;
 		},
 		// error
 		function(err) {
@@ -221,6 +246,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response.data);
 			// send data to view
 			self.dinner = response.data.dinner;
+			// add dinner to dayObj
+			dayObj.dinner = response.data;
 
 			// create single string for opentable link
 			nameDinner = response.data.dinner.name.split(' ').join('-');
@@ -233,25 +260,24 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	};
 
 
-	// OPENTABLE GET REQUEST BRUNCH
-	// this.dinnerRes = function(input) {
-
-	// 	var url = 'http://' + input;
-	// 	console.log('URL: ' + url);
-
-	// 	// $http({
-	// 	// 	method: 'GET',
-	// 	// 	url: 'http://' + input
-	// 	// }).then(
-	// 	// // success
-	// 	// function(response) {
-	// 	// 	console.log(response);
-	// 	// },
-	// 	// // error
-	// 	// function(err) {
-	// 	// 	console.log("ERROR");
-	// 	// });
-	// }
+	// ROUTE TO ADD DAYOBJ TO USER'S DAY ARRAY
+	this.addDay = function() {
+		console.log(dayObj);
+		console.log(userObj);
+		$http({
+			method: 'PUT',
+			url: '/users/' + userObj.id,
+			data: dayObj
+		}).then(
+		// success
+		function(response) {
+			console.log(response);
+		},
+		// error
+		function(err) {
+			console.log("ERROR");
+		});
+	};
 
 
 	

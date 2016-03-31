@@ -34,6 +34,7 @@ router.post('/login', passport.authenticate('local-login'), function(req, res){
 // IS LOGGED IN
 router.get('/isLoggedIn', function(req, res) {
 	if(req.isAuthenticated() == true) {
+		console.log("USER IS LOGGED IN");
 		res.send(req.user);
 	}
 	else {
@@ -62,7 +63,23 @@ router.get('/logout', function(req, res) {
 // SHOW USER
 
 
+
 // ADD DAY TO USER'S DAY ARRAY
+router.put('/:id', function(req, res) {
+	console.log("THIS IS THE PUT ROUTE FOR THE DAY OBJ: ", req.body);
+	console.log(req.params.id);
+	// make sure user is logged in
+	res.locals.usertrue = (req.user.id == req.params.id);
+	User.findById(req.params.id, function(err, data) {
+		data.days.push(req.body);
+		data.save();
+		res.send("saved!");
+	});
+});
+
+
+// DELETE USER
+
 
 
 // MIDDLEWARE TO CHECK LOGIN STATUS
