@@ -85,7 +85,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		}).then(
 		// success
 		function(response) {
-			console.log(response);
+			// console.log(response);
 			if (response.data.username != null) {
 				console.log("User is logged in!");
 				// user is logged in
@@ -96,6 +96,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 				userObj.id = response.data._id;
 			}
 			else {
+				console.log("User is not logged in");
 				// user is not logged in
 				self.user = false;
 			};
@@ -191,13 +192,13 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		function(response) {
 			console.log(response.data);
 			// send data to view
-			self.brunch = response.data.brunch;
+			self.brunch = response.data;
 			// add brunch to dayObj
 			dayObj.brunch = response.data;
 
 			// create single string for opentable link
-			nameBrunch = response.data.brunch.name.split(' ').join('-');
-			self.otBrunchLink = 'http://www.opentable.com/' + nameBrunch;
+			// nameBrunch = response.data.brunch.name.split(' ').join('-');
+			// self.otBrunchLink = 'http://www.opentable.com/' + nameBrunch;
 		},
 		// error
 		function(err) {
@@ -220,7 +221,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		function(response) {
 			console.log(response.data);
 			// send data to view
-			self.drinks = response.data.drinks;
+			self.drinks = response.data;
 			// add drinks to dayObj
 			dayObj.drinks = response.data;
 		},
@@ -245,13 +246,13 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		function(response) {
 			console.log(response.data);
 			// send data to view
-			self.dinner = response.data.dinner;
+			self.dinner = response.data;
 			// add dinner to dayObj
 			dayObj.dinner = response.data;
 
 			// create single string for opentable link
-			nameDinner = response.data.dinner.name.split(' ').join('-');
-			self.otDinnerLink = 'http://www.opentable.com/' + nameDinner;
+			// nameDinner = response.data.dinner.name.split(' ').join('-');
+			// self.otDinnerLink = 'http://www.opentable.com/' + nameDinner;
 		},
 		// error
 		function(err) {

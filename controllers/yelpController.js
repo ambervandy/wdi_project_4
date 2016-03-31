@@ -15,7 +15,9 @@ var yelp = new Yelp({
 
 
 // empty objects to hold all data to send back to app.js
-var entireDay = {};
+// var brunchData = {};
+// var drinksData = {};
+// var dinnerData = {};
 
 
 // RANDOM ACTIVITY REQUEST 
@@ -41,7 +43,7 @@ router.get('/random', function(req, res) {
 			console.log('                    END OF ACTIVITY                   ');
 			console.log('======================================================');
 
-			// send back day data
+			// send back activity data
 			res.send(data.businesses[num]);
 		})
 		.catch(function (err) {
@@ -78,7 +80,7 @@ router.get('/neighborhood/:id', function(req, res) {
 			console.log('             END OF ACTIVITY BY NEIGHBORHOOD          ');
 			console.log('======================================================');
 
-	  		// send back day data
+	  		// send back activity data
 			res.send(data.businesses[num]);
 		})
 		.catch(function (err) {
@@ -116,8 +118,9 @@ router.get('/brunch/:id', function(req, res) {
 			console.log('======================================================');
 
 			// send back day data
-			entireDay.brunch = data.businesses[num];
-			res.send(entireDay);
+			// entireDay.brunch = data.businesses[num];
+			// res.send(entireDay);
+			res.send(data.businesses[num]);
 		})
 		.catch(function (err) {
 	  		console.error(err);
@@ -151,8 +154,9 @@ router.get('/drinks/:id', function(req, res) {
 			console.log('======================================================');
 
 			// send back day data
-			entireDay.drinks = data.businesses[num];
-			res.send(entireDay);
+			// entireDay.drinks = data.businesses[num];
+			// res.send(entireDay);
+			res.send(data.businesses[num]);
 		})
 		.catch(function (err) {
 	  		console.error(err);
@@ -186,8 +190,9 @@ router.get('/dinner/:id', function(req, res) {
 			console.log('======================================================');
 
 			// send back day data
-			entireDay.dinner = data.businesses[num];
-			res.send(entireDay);
+			// entireDay.dinner = data.businesses[num];
+			// res.send(entireDay);
+			res.send(data.businesses[num]);
 
 		})
 		.catch(function (err) {
