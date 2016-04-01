@@ -36,10 +36,16 @@ router.get('/random', function(req, res) {
 			console.log('======================================================');
 			console.log('                 BEGINNING OF ACTIVITY                ');
 			console.log('======================================================');
-	  		console.log(data.businesses[num]);
+	  		// console.log(data.businesses[num]);
+	  		console.log(data.businesses);
 	  		console.log('======================================================');
 			console.log('                    END OF ACTIVITY                   ');
 			console.log('======================================================');
+
+			if (data.businesses[num] == null) {
+				console.log("DINNER IS NULL");
+				num = 0;
+			}
 
 			// send back activity data
 			res.send(data.businesses[num]);
@@ -68,15 +74,21 @@ router.get('/neighborhood/:id', function(req, res) {
 
 			// getting random integer to return random business activity
 			var num = Math.floor(Math.random() * 20 + 1);
-			console.log(num)
+			console.log(num);
 
 			console.log('======================================================');
 			console.log('         BEGINNING OF ACTIVITY BY NEIGHBORHOOD        ');
 			console.log('======================================================');
-	  		console.log(data.businesses[num]);
+	  		// console.log(data.businesses[num]);
+	  		console.log(data.businesses);
 	  		console.log('======================================================');
 			console.log('             END OF ACTIVITY BY NEIGHBORHOOD          ');
 			console.log('======================================================');
+
+			if (data.businesses[num] == null) {
+				console.log("DINNER IS NULL");
+				num = 0;
+			}
 
 	  		// send back activity data
 			res.send(data.businesses[num]);
@@ -98,9 +110,9 @@ router.get('/brunch/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ 	term: 'brunch,breakfast,cafe',
+		{ 	term: 'breakfast_brunch',
 		  	ll: req.params.id,
-		  	radius_filter: 1000,
+		  	radius_filter: 800,
 		  	sort: sortNum,
 		  	limit: 20 }
 		  // success
@@ -119,13 +131,15 @@ router.get('/brunch/:id', function(req, res) {
 			console.log('======================================================');
 			console.log('                  BEGINNING OF BRUNCH                 ');
 			console.log('======================================================');
-	  		console.log(data.businesses[num]);
+	  		// console.log(data.businesses[num]);
+	  		console.log(data.businesses);
 	  		console.log('======================================================');
 			console.log('                      END OF BRUNCH                   ');
 			console.log('======================================================');
 
 			if (data.businesses[num] == null) {
 				console.log("BRUNCH IS NULL");
+				num = 0;
 			}
 
 			// send back brunch data
@@ -145,9 +159,9 @@ router.get('/drinks/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ 	term: 'bars,cocktails',
+		{ 	term: 'bars,pubs,lounges',
 		  	ll: req.params.id,
-		  	radius_filter: 1000,
+		  	radius_filter: 800,
 		  	sort: sortNum,
 		  	limit: 20 }
 		  // success
@@ -166,13 +180,15 @@ router.get('/drinks/:id', function(req, res) {
 			console.log('======================================================');
 			console.log('                  BEGINNING OF DRINKS                 ');
 			console.log('======================================================');
-	  		console.log(data.businesses[num]);
+	  		// console.log(data.businesses[num]);
+	  		console.log(data.businesses);
 	  		console.log('======================================================');
 			console.log('                      END OF DRINKS                   ');
 			console.log('======================================================');
 
 			if (data.businesses[num] == null) {
 				console.log("DRINKS IS NULL");
+				num = 0;
 			}
 
 			// send back drinks data
@@ -192,9 +208,9 @@ router.get('/dinner/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ 	term: 'dinner,restaurants',
+		{ 	term: 'restaurants',
 		  	ll: req.params.id,
-		  	radius_filter: 1000,
+		  	radius_filter: 800,
 		  	sort: sortNum,
 		  	limit: 20 }
 		  // success
@@ -213,13 +229,15 @@ router.get('/dinner/:id', function(req, res) {
 			console.log('======================================================');
 			console.log('                  BEGINNING OF DINNER                 ');
 			console.log('======================================================');
-	  		console.log(data.businesses[num]);
+	  		// console.log(data.businesses[num]);
+	  		console.log(data.businesses);
 	  		console.log('======================================================');
 			console.log('                      END OF DINNER                   ');
 			console.log('======================================================');
 
 			if (data.businesses[num] == null) {
 				console.log("DINNER IS NULL");
+				num = 0;
 			}
 
 			// send back dinner data
