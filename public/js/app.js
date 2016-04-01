@@ -136,10 +136,15 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			// add activity to dayObj
 			dayObj.activity = response.data;
 
-			var address = response.data.location.display_address.join(', ');
-			self.getBrunch(address);
-			self.getDrinks(address);
-			self.getDinner(address);
+			// get lat,lng for brunch, drinks, dinner
+			var lat = response.data.location.coordinate.latitude;
+			var lng = response.data.location.coordinate.longitude;
+			coordinates = lat + "," + lng;
+
+			// invoke brunch, drinks, dinner
+			self.getBrunch(coordinates);
+			self.getDrinks(coordinates);
+			self.getDinner(coordinates);
 		},
 		// error
 		function(err) {
@@ -166,10 +171,15 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			// add activity to dayObj
 			dayObj.activity = response.data;
 
-			var address = response.data.location.display_address.join(', ');
-			self.getBrunch(address);
-			self.getDrinks(address);
-			self.getDinner(address);
+			// get lat,lng to pass to brunch, drinks, and dinner
+			var lat = response.data.location.coordinate.latitude;
+			var lng = response.data.location.coordinate.longitude;
+			coordinates = lat + "," + lng;
+
+			// invoke brunch, drinks, dinner functions
+			self.getBrunch(coordinates);
+			self.getDrinks(coordinates);
+			self.getDinner(coordinates);
 		},
 		// error
 		function(err) {
@@ -179,14 +189,13 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
 
 	// YELP GET REQUEST - BRUNCH
-	this.getBrunch = function(address) {
+	this.getBrunch = function(coordinates) {
 
-		console.log(address);
-		var param = address
+		console.log(coordinates);
 
 		$http({
 			method: 'GET',
-			url: '/yelp/brunch/' + param,
+			url: '/yelp/brunch/' + coordinates,
 		}).then(
 		// success
 		function(response) {
@@ -208,14 +217,11 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
 
 	// YELP GET REQUEST - DRINKS
-	this.getDrinks = function(address) {
-
-		console.log(address);
-		var param = address
+	this.getDrinks = function(coordinates) {
 
 		$http({
 			method: 'GET',
-			url: '/yelp/drinks/' + param,
+			url: '/yelp/drinks/' + coordinates,
 		}).then(
 		// success
 		function(response) {
@@ -233,14 +239,11 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
 
 	// YELP GET REQUEST - DINNER
-	this.getDinner = function(address) {
-
-		console.log(address);
-		var param = address
+	this.getDinner = function(coordinates) {
 
 		$http({
 			method: 'GET',
-			url: '/yelp/dinner/' + param,
+			url: '/yelp/dinner/' + coordinates,
 		}).then(
 		// success
 		function(response) {
@@ -304,13 +307,13 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
 
 	// FACEBOOK SHARE BUTTON (NEED TO FIGURE OUT WHAT TO SHARE)
-	this.shareMe = function(item) {
-		console.log(item.gifUrl);
-		FB.ui({
-			method: 'share',
-			href: item.gifUrl,
-			}, function(response){});
-	}
+	// this.shareMe = function(item) {
+	// 	console.log(item.gifUrl);
+	// 	FB.ui({
+	// 		method: 'share',
+	// 		href: 'http://localhost:3000',
+	// 		}, function(response){});
+	// }
 
 
 
