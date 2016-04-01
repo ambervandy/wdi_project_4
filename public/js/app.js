@@ -303,6 +303,52 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	};
 
 
+	// FACEBOOK SHARE BUTTON (NEED TO FIGURE OUT WHAT TO SHARE)
+	this.shareMe = function(item) {
+		console.log(item.gifUrl);
+		FB.ui({
+			method: 'share',
+			href: item.gifUrl,
+			}, function(response){});
+	}
+
+
+
+	// EDIT USERNAME OR EMAIL
+	this.submitEdit = function() {
+		$http({
+			method: 'POST',
+			url: '/users/edit',
+			data: this
+		}).then(
+		// success
+		function(response){
+			console.log(response);
+			console.log($scope);
+			$scope.ctrl.single.username = response.data.username;
+			$scope.ctrl.single.email = response.data.email;
+		},
+		// err
+		function(err){
+			console.log(err)
+		});
+	};
+
+
+	// DELETE USER
+	this.deleteUser = function() {
+		$http({
+			method: 'DELETE',
+			url: '/users/' + userObj.id,
+			data: this
+		}).then(
+		// success
+		function(response) {
+			console.log('DELETED');
+		});
+	}
+
+
 	
 
 

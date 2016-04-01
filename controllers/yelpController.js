@@ -92,15 +92,21 @@ router.get('/brunch/:id', function(req, res) {
 		// search params
 		{ 	term: 'brunch',
 		  	location: req.params.id,
-		  	radius_filter: 1500,
+		  	radius_filter: 800,
 		  	sort: 2,
 		  	limit: 20 }
 		  // success
 		).then(function (data) {
 
 			// getting random integer to return random business activity
-			var num = Math.floor(Math.random() * 20 + 1);
-			console.log(num)
+			var total = data.businesses.length
+
+			if (total < 20) {
+				var num = Math.floor(Math.random() * total + 1);
+			}
+			else {
+				var num = Math.floor(Math.random() * 20 + 1);
+			}
 
 			console.log('======================================================');
 			console.log('                  BEGINNING OF BRUNCH                 ');
@@ -126,15 +132,21 @@ router.get('/drinks/:id', function(req, res) {
 		// search params
 		{ 	term: 'bars',
 		  	location: req.params.id,
-		  	radius_filter: 1500,
+		  	radius_filter: 800,
 		  	sort: 2,
 		  	limit: 20 }
 		  // success
 		).then(function (data) {
 
 			// getting random integer to return random business activity
-			var num = Math.floor(Math.random() * 20 + 1);
-			console.log(num)
+			var total = data.businesses.length
+
+			if (total < 20) {
+				var num = Math.floor(Math.random() * total + 1);
+			}
+			else {
+				var num = Math.floor(Math.random() * 20 + 1);
+			}
 
 			console.log('======================================================');
 			console.log('                  BEGINNING OF DRINKS                 ');
@@ -160,15 +172,21 @@ router.get('/dinner/:id', function(req, res) {
 		// search params
 		{ 	term: 'dinner',
 		  	location: req.params.id,
-		  	radius_filter: 1500,
+		  	radius_filter: 800,
 		  	sort: 2,
 		  	limit: 20 }
 		  // success
 		).then(function (data) {
 
 			// getting random integer to return random business activity
-			var num = Math.floor(Math.random() * 20 + 1);
-			console.log(num)
+			var total = data.businesses.length
+
+			if (total < 20) {
+				var num = Math.floor(Math.random() * total + 1);
+			}
+			else {
+				var num = Math.floor(Math.random() * 20 + 1);
+			}
 
 			console.log('======================================================');
 			console.log('                  BEGINNING OF DINNER                 ');

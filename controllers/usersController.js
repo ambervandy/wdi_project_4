@@ -45,7 +45,16 @@ router.get('/isLoggedIn', function(req, res) {
 });
 
 
-// EDIT USER PROFILE????
+// EDIT USER PROFILE
+router.post('/edit', function(req, res) {
+	console.log("REQ.BODY: ", req.body.editData);
+	User.findById(req.user.id, function(err, data) {
+		data.username = req.body.editData.username;
+		data.email = req.body.editData.email;
+		data.save();
+		res.send(data);
+	});
+});
 
 
 
@@ -57,11 +66,6 @@ router.get('/logout', function(req, res) {
 	req.user = null;
 	res.send(req.user);
 });
-
-
-
-// SHOW USER
-
 
 
 // ADD DAY TO USER'S DAY ARRAY
@@ -105,6 +109,12 @@ router.delete('/delete/:id', function(req, res) {
 
 
 // DELETE USER
+router.delete('/:id', function(req, res) {
+	User.findByIdAndRemove(req.params.id, function(err, user) {
+		console.log('DELETED');
+		// can we redirect to somewhere?
+	});
+});
 
 
 
