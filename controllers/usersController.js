@@ -80,6 +80,7 @@ router.put('/:id', function(req, res) {
 	newDay.drinks = req.body.drinks;
 	newDay.dinner = req.body.dinner;
 	newDay.activity = req.body.activity;
+	newDay.date = new Date();
 	// find user and push newDay into days
 	User.findById(req.params.id, function(err, data) {
 		data.days.push(newDay);

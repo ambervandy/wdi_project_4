@@ -7,7 +7,8 @@ var daySchema = mongoose.Schema({
 	brunch: {},
 	drinks: {},
 	dinner: {},
-	activity: {}
+	activity: {},
+	date: {}
 });
 
 
