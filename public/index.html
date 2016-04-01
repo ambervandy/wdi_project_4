@@ -18,7 +18,7 @@
 
 <body ng-controller="userController as ctrl">
 
-	
+	<!-- FACEBOOK -->
 	<script>
 		window.fbAsyncInit = function() {
 			FB.init({
@@ -36,50 +36,67 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-	
+	<!-- END FACEBOOK -->
 
-	<h1>THIS IS MY INDEX PAGE</h1>
+
+	<!-- HEADER + NAV -->
+	<header>
+		<div id="left">
+			WEEKENDER
+		</div>
+		<ul>
+			<li ng-click="ctrl.logout()">LOGOUT</li>
+			<li>EDIT</li>
+			<li>DAYS</li>
+		</ul>	
+	</header>	
+
+	
 
 	<!-- SIGN UP AND LOGIN FORMS -->
-	</br>
-	
-	<div id="formDiv">
 
 		<!-- show if not already logged in -->
-		<form id="logIn">
-			<input ng-model="ctrl.loginData.email" type="text" placeholder="email">
-			<input ng-model="ctrl.loginData.password" type="password" placeholder="password">
-			<button ng-click="ctrl.logIn()" class="formButton">&nbsp;&nbsp;&nbsp; LOG IN &nbsp;&nbsp;&nbsp;</button></br>
-			<!-- <p id="login-status"></p>
-			<p ng-click="ctrl.formShow()">not a user? sign up</p> -->
-		</form>	
+		<div class="main">
+			<div class="content_wrapper">
+				<h2>WEEKENDER</h2>
+				<form id="logIn">
+					<input ng-model="ctrl.loginData.email" type="text" placeholder="email">
+					<input ng-model="ctrl.loginData.password" type="password" placeholder="password">
+					<button ng-click="ctrl.logIn()" class="formButton">&nbsp;&nbsp;&nbsp; LOG IN &nbsp;&nbsp;&nbsp;</button></br>
+					<!-- <p id="login-status"></p> -->
+					<p ng-click="ctrl.formShow()">not a user? sign up</p>
+				</form>	
+			</div>
+		</div>
 
 
 		<!-- show if not yet signed up -->
-		<form id="signUp">
-			<input type="text" ng-model="ctrl.signUpData.email" placeholder="email">
-			<input type="password" ng-model="ctrl.signUpData.password" placeholder="password">
-			<input type="text" ng-model="ctrl.signUpData.username" placeholder="username">
-			<button ng-click="ctrl.signUp()" class="formButton">&nbsp;&nbsp;SIGN UP&nbsp;&nbsp;</button></br>
-			<!-- <p ng-click="ctrl.formShow()">already a user? sign in.</p> -->
-		</form>
+		<div class="main">
+			<div class="content_wrapper">
+				<h2>WEEKENDER</h2>
+				<form id="signUp">
+					<input type="text" ng-model="ctrl.signUpData.email" placeholder="email">
+					<input type="password" ng-model="ctrl.signUpData.password" placeholder="password">
+					<input type="text" ng-model="ctrl.signUpData.username" placeholder="username">
+					<button ng-click="ctrl.signUp()" class="formButton">&nbsp;&nbsp;SIGN UP&nbsp;&nbsp;</button></br>
+					<p ng-click="ctrl.formShow()">already a user? sign in.</p>
+				</form>
+			</div>
+		</div>
 
 
 		<!-- edit profile form -->
-		<form id="editProfile" ng-submit="ctrl.submitEdit()">
-			<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}">
-			<input type="text" ng-model="ctrl.editData.username" placeholder="{{ ctrl.single.username }}">
-			<button class="formButton">SUBMIT</button></br>
-		</form>
-
-		<!-- logout button to show only when logged in -->
-		<button id="logoutButton" class="formButton" ng-click="ctrl.logout()">LOG OUT</button>
-
-		<!-- <button id="editButton" ng-click="ctrl.editMe()" ng-if="!ctrl.editProfile && ctrl.user">&nbsp;&nbsp;&nbsp;&nbsp; EDIT &nbsp;&nbsp;&nbsp;&nbsp;</button> -->
-
-	</div>	
+		<div class="main">
+			<h2>EDIT</h2>
+			<div class="content_wrapper">
+				<form id="editProfile" ng-submit="ctrl.submitEdit()">
+					<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}">
+					<input type="text" ng-model="ctrl.editData.username" placeholder="{{ ctrl.single.username }}">
+					<button class="formButton">SUBMIT</button></br>
+				</form>
+			</div>
+		</div>
 	
-	</br></br></br></br></br></br>
 
 
 	<!-- TESTING TO GET DATA FROM YELP.COM -->

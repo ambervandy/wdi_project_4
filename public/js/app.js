@@ -352,6 +352,12 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	}
 
 
+	// SHOW LOGIN OR SIGN UPFORM
+	this.formShow = function() {
+		
+	}
+
+
 	
 
 
