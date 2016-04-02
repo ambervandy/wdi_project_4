@@ -13,6 +13,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUEpj1aqPq0_0wU5s1SQGf5B-382gVGKA&callback=initMap">
     </script>
 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 </head>
@@ -44,7 +45,7 @@
 
 
 	<!-- HEADER + NAV -->
-	<header>
+	<header ng-if="ctrl.user">
 		<div id="left">
 			WEEKENDER
 		</div>
@@ -136,33 +137,51 @@
 
 
 
-	<!-- LIST DAY INFO -->
+	<!-- ITINERARY -->
 	<div class="main" ng-if="ctrl.itinerary">
-		<div class="content_wrapper">
+		<div class="itinerary_wrapper">
 			<h2>ITINERARY</h2>
-			<h4>NEIGHBORHOOD</h2>
-			<p>date</p>
+			<h3>{{ ctrl.activity.location.neighborhoods[0] }}</h3></br>
 
-			<h4>BRUNCH</h4>
-			<p>{{ ctrl.brunch.name }}</p>
-			<input type="hidden" id="brunchAddress" value="{{ ctrl.brunch.location.display_address.join(', ') }}">
-		    <a href="{{ ctrl.otBrunchLink }}" target="_blank"><p>reservation</p></a>	
-		    <!-- need to add img of rating when we create the objects holding brunch, dinner, drinks, activity -->
+			<div class="it_div">	
+				<h3>BRUNCH</h3>
+				<b>{{ ctrl.brunch.name }}</b></br></br>
+				<img src="{{ ctrl.brunch.rating_img_url }}">
+				<p>{{ ctrl.brunch.display_phone }}</p>
+				<input type="hidden" id="brunchAddress" value="{{ ctrl.brunch.location.display_address.join(', ') }}">
+			    <a href="{{ ctrl.otBrunchLink }}" target="_blank"><p>reservation</p></a>	
+			    <!-- need to add img of rating when we create the objects holding brunch, dinner, drinks, activity -->
+			</div>
 
-			<h4>ACTIVITY</h4>
-			<p>{{ ctrl.activity.name }}</p>
-			<input type="hidden" id="activityAddress" value="{{ ctrl.activity.location.display_address.join(', ') }}">
+		    <div class="it_div">
+				<h3>ACTIVITY</h3>
+				<b>{{ ctrl.activity.name }}</b></br></br>
+				<img src="{{ ctrl.activity.rating_img_url }}">
+				<p>{{ ctrl.dinner.display_phone }}</p>
+				<input type="hidden" id="activityAddress" value="{{ ctrl.activity.location.display_address.join(', ') }}">
+			</div>
 
-			<h4>DRINKS</h4>
-			<p>{{ ctrl.drinks.name }}</p>
-			<input type="hidden" id="drinksAddress" value="{{ ctrl.drinks.location.display_address.join(', ') }}">
+			<div class="it_div">
+				<h3>DRINKS</h3>
+				<b>{{ ctrl.drinks.name }}</b></br></br>
+				<img src="{{ ctrl.drinks.rating_img_url }}">
+				<p>{{ ctrl.dinner.display_phone }}</p>
+				<input type="hidden" id="drinksAddress" value="{{ ctrl.drinks.location.display_address.join(', ') }}">
+			</div>
 
-			<h4>DINNER</h4>
-			<p>{{ ctrl.dinner.name }}</p>
-			<input type="hidden" id="dinnerAddress" value="{{ ctrl.dinner.location.display_address.join(', ') }}">
-			<a href="{{ ctrl.otDinnerLink }}" target="_blank"><p>reservation</p></a>
-			<button ng-click="ctrl.getMap()" id="getDirections">GET DIRECTIONS</button>
-			<button ng-click="ctrl.addDay()">SAVE TO DAYS</button>
+			<div class="it_div">
+				<h3>DINNER</h3>
+				<b>{{ ctrl.dinner.name }}</b></br></br>
+				<img src="{{ ctrl.dinner.rating_img_url }}">
+				<p>{{ ctrl.dinner.display_phone }}</p>
+				<input type="hidden" id="dinnerAddress" value="{{ ctrl.dinner.location.display_address.join(', ') }}">
+				<a href="{{ ctrl.otDinnerLink }}" target="_blank"><p>reservation</p></a>
+			</div>
+
+			<div id="button_div">
+				<button ng-click="ctrl.getMap()" id="getDirections">GET DIRECTIONS</button></br>
+				<button ng-click="ctrl.addDay()">SAVE TO DAYS</button>
+			</div>
 		</div>
 	</div>	
 
