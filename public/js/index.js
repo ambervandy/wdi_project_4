@@ -10,6 +10,7 @@ function loadAPI() {
 };
 
 
+
 // GLOBAL VARIABLES
 var startingCoordinates = '';
 var directionDisplay;

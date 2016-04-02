@@ -392,15 +392,45 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	this.getMap = function() {
 		console.log('GET MAP FUNCTION IS RUNNING');
 		// hide itinerary
-		this.itinerary = false;
+		this.itinerary = !this.itinerary;
 		// show map
-		this.map = true;
+		this.map = !this.map;
 	};
 
 
 	// SHOW EDIT FORM
 	this.editProfile = function() {
 		this.userEdit = !this.userEdit;
+	};
+
+
+	// BACK TO GET DAY FORM
+	this.getNew = function() {
+		this.getDay = true;
+		this.map = false;
+		this.itinerary = false;
+		this.days = false;
+	};
+
+
+	// BACK TO LOGIN ON LOGOUT
+	this.toLogIn = function() {
+		this.getDay = false;
+		this.getMap = false;
+		this.itinerary = false;
+		this.days = false;
+		this.user = false;
+		this.loginData.email = '';
+		this.loginData.password = '';
+	};
+
+
+	// GET ALL USER DAYS
+	this.getAllDays = function() {
+		this.getDay = false;
+		this.getMap = false;
+		this.itinerary = false;
+		this.days = true;
 	};
 
 

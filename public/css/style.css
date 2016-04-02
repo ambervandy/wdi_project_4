@@ -140,6 +140,7 @@ li {
 .it_div {
 	border: 1px black solid;
 	margin: 1em 20% 1em 20%;
+	padding: 0.5em 5% 2em 5%;
 }
 
 #button_div {
@@ -159,6 +160,10 @@ li {
 
 .map_wrapper > h2 {
 	margin-bottom: 2em;
+}
+
+.map_wrapper > p {
+	margin-top: 3em;
 }
 
 
