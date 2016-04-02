@@ -6,18 +6,26 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	// VAR FOR THIS
 	var self = this;
 
+	// SHOW LOGIN FORM FIRST
+	this.displayForm = true;
+
+	// NO DISPLAY MAP UNTIL GETDIRECTIONS BUTTON IS PUSHED
+	this.displayMap = true;
+
+	// NO DISPLAY ITIN UNTIL GET DAY BUTTON IS PUSHED
+	this.displayItin = true;
 
 	// VAR FOR OPEN TABLE
 	var otBrunchLink = '';
 	var otDinnerLink = '';
 
-
 	// CREATE EMPTY OBJECT TO HOLD USER ID
 	var userObj = {};
 
-
 	// CREATE EMPTY OBJECT TO HOLD DAY DATA
 	var dayObj = {}; 
+
+
 
 
 	// GET ALL USER DATA
@@ -349,13 +357,26 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		function(response) {
 			console.log('DELETED');
 		});
-	}
+	};
 
 
 	// SHOW LOGIN OR SIGN UPFORM
 	this.formShow = function() {
-		
-	}
+		this.displayForm = !this.displayForm;
+	};
+
+
+	this.displayItinerary = function() {
+		console.log("displayItinerary is running!")
+		this.displayItin = false;
+	};
+
+
+	// SHOW MAP
+	this.getMap = function() {
+		console.log('GET MAP FUNCTION IS RUNNING')
+		this.displayMap = false;
+	};
 
 
 	

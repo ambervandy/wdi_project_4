@@ -8,15 +8,18 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js" charset="utf-8"></script>
 	<!-- ANGULAR ANIMATE -->
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<!--
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUEpj1aqPq0_0wU5s1SQGf5B-382gVGKA&callback=initMap">
     </script>
+-->
     <script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 </head>
 
 
 <body ng-controller="userController as ctrl">
+
 
 	<!-- FACEBOOK -->
 	<script>
@@ -39,6 +42,7 @@
 	<!-- END FACEBOOK -->
 
 
+
 	<!-- HEADER + NAV -->
 	<header>
 		<div id="left">
@@ -48,154 +52,145 @@
 			<li ng-click="ctrl.logout()">LOGOUT</li>
 			<li>EDIT</li>
 			<li>DAYS</li>
-		</ul>	
+		</ul>
 	</header>	
 
 	
 
 	<!-- SIGN UP AND LOGIN FORMS -->
 
-		<!-- show if not already logged in -->
-		<div class="main">
-			<div class="content_wrapper">
-				<h2>WEEKENDER</h2>
-				<form id="logIn">
-					<input ng-model="ctrl.loginData.email" type="text" placeholder="email">
-					<input ng-model="ctrl.loginData.password" type="password" placeholder="password">
-					<button ng-click="ctrl.logIn()" class="formButton">&nbsp;&nbsp;&nbsp; LOG IN &nbsp;&nbsp;&nbsp;</button></br>
-					<!-- <p id="login-status"></p> -->
-					<p ng-click="ctrl.formShow()">not a user? sign up</p>
-				</form>	
-			</div>
+
+	<!-- LOG IN -->
+	<div class="main" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'':'hideForm'">
+		<div class="form_wrapper">
+			<h2>WEEKENDER</h2>
+			<form id="logIn">
+				<input ng-model="ctrl.loginData.email" type="text" placeholder="email"></br>
+				<input ng-model="ctrl.loginData.password" type="password" placeholder="password"></br>
+				<button ng-click="ctrl.logIn()" class="formButton">&nbsp;&nbsp;&nbsp; LOG IN &nbsp;&nbsp;&nbsp;</button></br>
+				<!-- <p id="login-status"></p> -->
+				<p ng-click="ctrl.formShow()">not a user? sign up</p>
+			</form>	
 		</div>
-
-
-		<!-- show if not yet signed up -->
-		<div class="main">
-			<div class="content_wrapper">
-				<h2>WEEKENDER</h2>
-				<form id="signUp">
-					<input type="text" ng-model="ctrl.signUpData.email" placeholder="email">
-					<input type="password" ng-model="ctrl.signUpData.password" placeholder="password">
-					<input type="text" ng-model="ctrl.signUpData.username" placeholder="username">
-					<button ng-click="ctrl.signUp()" class="formButton">&nbsp;&nbsp;SIGN UP&nbsp;&nbsp;</button></br>
-					<p ng-click="ctrl.formShow()">already a user? sign in.</p>
-				</form>
-			</div>
-		</div>
-
-
-		<!-- edit profile form -->
-		<div class="main">
-			<h2>EDIT</h2>
-			<div class="content_wrapper">
-				<form id="editProfile" ng-submit="ctrl.submitEdit()">
-					<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}">
-					<input type="text" ng-model="ctrl.editData.username" placeholder="{{ ctrl.single.username }}">
-					<button class="formButton">SUBMIT</button></br>
-				</form>
-			</div>
-		</div>
-	
-
-
-	<!-- TESTING TO GET DATA FROM YELP.COM -->
-	<form ng-submit="ctrl.searchByNeighb(input)">
-		<input type="text" ng-model="ctrl.input" placeholder="LET ME KNOW WHAT NEIGHBORHOOD">
-		<button>GET ME ACTIVITY IN THIS NEIGHBORHOOD</button>
-	</form>
-
-	<h3>-- OR --</h3>
-
-	<form>
-		<button ng-click="ctrl.searchYelp()">GET ME A RANDOM ACTIVITY</button>
-	</form>
-
-
-
-	<!-- LIST DAY INFO -->
-	<h2>RANDOM DAY</h2>
-
-	<h4>BRUNCH</h4>
-	<p>{{ ctrl.brunch.name }}</p>
-	<input type="hidden" id="brunchAddress" value="{{ ctrl.brunch.location.display_address.join(', ') }}">
-    <a href="{{ ctrl.otBrunchLink }}" target="_blank"><p>reservation</p></a>	
-    <!-- need to add img of rating when we create the objects holding brunch, dinner, drinks, activity -->
-
-	<h4>ACTIVITY</h4>
-	<p>{{ ctrl.activity.name }}</p>
-	<input type="hidden" id="activityAddress" value="{{ ctrl.activity.location.display_address.join(', ') }}">
-
-	<h4>DRINKS</h4>
-	<p>{{ ctrl.drinks.name }}</p>
-	<input type="hidden" id="drinksAddress" value="{{ ctrl.drinks.location.display_address.join(', ') }}">
-
-	<h4>DINNER</h4>
-	<p>{{ ctrl.dinner.name }}</p>
-	<input type="hidden" id="dinnerAddress" value="{{ ctrl.dinner.location.display_address.join(', ') }}">
-	<a href="{{ ctrl.otDinnerLink }}" target="_blank"><p>reservation</p></a>
-	
-
-
-	<!-- DIRECTIONS AND MAP -->
-	<button id="getDirections">GET DIRECTIONS</button>
-	</br>
-	</br>
-	</br>
-
-	<div id="mapContainer">
-		<div id="map"></div>
 	</div>
 
 
-	</br>
-	</br>
-	</br>
 
-	<!-- ADD DAY TO USER -->
-	<form>
-		<button ng-click="ctrl.addDay()">SAVE MY DAY</button>
-	</form>
+	<!-- SIGN UP -->
+	<div class="main" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'hideForm':''">
+		<div class="form_wrapper">
+			<h2>WEEKENDER</h2>
+			<form id="signUp">
+				<input type="text" ng-model="ctrl.signUpData.email" placeholder="email"></br>
+				<input type="password" ng-model="ctrl.signUpData.password" placeholder="password"></br>
+				<input type="text" ng-model="ctrl.signUpData.username" placeholder="username"></br>
+				<button ng-click="ctrl.signUp()" class="formButton">&nbsp;&nbsp;SIGN UP&nbsp;&nbsp;</button></br>
+				<p ng-click="ctrl.formShow()">already a user? sign in.</p>
+			</form>
+		</div>
+	</div>
 
-	</br>
-	</br>
-	</br>
 
-	<!-- SHOW USER TRIPS -->
-	<div id="userDayContainer" ng-if="ctrl.user">
-		<div class="dayWrapper">
-			<ul>	
-				<li ng-repeat="day in ctrl.single.days track by $index">
+
+	<!-- EDIT & DELETE PROFILE -->
+	<div class="main" ng-if="ctrl.user">
+		<h2>EDIT</h2>
+		<div class="form_wrapper">
+			<form id="editProfile" ng-submit="ctrl.submitEdit()"></br>
+				<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}"></br>
+				<input type="text" ng-model="ctrl.editData.username" placeholder="{{ ctrl.single.username }}"></br>
+				<button class="formButton">SUBMIT</button></br>
+			</form>
+			</br>
+			<form>
+				<button ng-if="ctrl.user" ng-click="ctrl.deleteUser()">DELETE ACCOUNT</button>
+			</form>
+		</div>
+	</div>
+	
+
+
+	<!-- GET DAY -->
+	<div class="main" ng-if="ctrl.user">
+		<div class="content_wrapper">
+			<form ng-submit="ctrl.searchByNeighb(input)">
+				<input type="text" ng-model="ctrl.input" placeholder="LET ME KNOW WHAT NEIGHBORHOOD">
+				<button ng-click="ctrl.displayItinerary()">GET ME ACTIVITY IN THIS NEIGHBORHOOD</button>
+			</form>
+
+			<h3>-- OR --</h3>
+
+			<form>
+				<button ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">GET ME A RANDOM ACTIVITY</button>
+			</form>
+		</div>
+	</div>
+
+
+<!-- ng-class="(ctrl.displayItin)?'hideItin':''" -->
+	<!-- LIST DAY INFO -->
+	<div class="main" ng-if="ctrl.user">
+		<div class="content_wrapper">
+			<h2>ITINERARY</h2>
+			<h4>NEIGHBORHOOD</h2>
+			<p>date</p>
+
+			<h4>BRUNCH</h4>
+			<p>{{ ctrl.brunch.name }}</p>
+			<input type="hidden" id="brunchAddress" value="{{ ctrl.brunch.location.display_address.join(', ') }}">
+		    <a href="{{ ctrl.otBrunchLink }}" target="_blank"><p>reservation</p></a>	
+		    <!-- need to add img of rating when we create the objects holding brunch, dinner, drinks, activity -->
+
+			<h4>ACTIVITY</h4>
+			<p>{{ ctrl.activity.name }}</p>
+			<input type="hidden" id="activityAddress" value="{{ ctrl.activity.location.display_address.join(', ') }}">
+
+			<h4>DRINKS</h4>
+			<p>{{ ctrl.drinks.name }}</p>
+			<input type="hidden" id="drinksAddress" value="{{ ctrl.drinks.location.display_address.join(', ') }}">
+
+			<h4>DINNER</h4>
+			<p>{{ ctrl.dinner.name }}</p>
+			<input type="hidden" id="dinnerAddress" value="{{ ctrl.dinner.location.display_address.join(', ') }}">
+			<a href="{{ ctrl.otDinnerLink }}" target="_blank"><p>reservation</p></a>
+			<button ng-click="ctrl.getMap()" id="getDirections">GET DIRECTIONS</button>
+			<button ng-click="ctrl.addDay()">SAVE TO DAYS</button>
+		</div>
+	</div>	
+
+
+<!-- ng-class="(ctrl.displayMap)?'hideMap':''" -->
+	<!-- DIRECTIONS AND MAP -->
+	<div class="main" ng-if="ctrl.user">
+		<div class="content_wrapper">
+			<h2>GETTING THERE</h2>
+			<div id="mapContainer">
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+	<!-- SHOW USER DAYS -->
+	<div class="main" ng-if="ctrl.user">
+		<div class="content_wrapper">
+			<div class="single_day">	
+				<div ng-repeat="day in ctrl.single.days track by $index">
+					<p>NEIGHBORHOOD</p>
+					<p>DATE</p>
 					<p>BRUNCH: {{ day.brunch.name }}</p>
 					<p>ACTIVITY: {{ day.activity.name }}</p>
 					<p>DRINKS: {{ day.drinks.name }}</p>
 					<p>DINNER: {{ day.dinner.name }}</p>
 					<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button>
 					<button class="share" ng-click="ctrl.shareMe(day)">SHARE TO FACEBOOK</button>
-				</li>
-			</ul>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	</br>
-	</br>
-	</br>
-
-	<!-- DELETE PROFILE -->
-	<form>
-		<button ng-if="ctrl.user" ng-click="ctrl.deleteUser()">DELETE ACCOUNT</button>
-	</form>
-
-
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
+	
 
 
 </body>
