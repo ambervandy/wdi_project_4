@@ -9,11 +9,17 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	// SHOW LOGIN FORM FIRST
 	this.displayForm = true;
 
-	// NO DISPLAY MAP UNTIL GETDIRECTIONS BUTTON IS PUSHED
-	this.displayMap = true;
+	// NO DISPLAY EDIT FORM UNTIL PRESS EDIT BUTTON
+	this.userEdit = false;
 
-	// NO DISPLAY ITIN UNTIL GET DAY BUTTON IS PUSHED
-	this.displayItin = true;
+	// HIDE ITINERARY UNTIL WANTED
+	this.itinerary = false;
+
+	// HIDE MAP UNTIL WANTED
+	this.map = false;
+
+	// HIDE USER DAYS UNTIL WANTED
+	this.days = false;
 
 	// VAR FOR OPEN TABLE
 	var otBrunchLink = '';
@@ -59,6 +65,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			self.single = response.data;
 			// save user id
 			userObj.id = response.data._id;
+			// ctrl.getDay is true
+			self.getDay = true;
 		});
 	};
 
@@ -80,6 +88,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			self.single = response.data;
 			// save user id
 			userObj.id = response.data._id;
+			// ctrl.getDay is true
+			self.getDay = true;
 		});
 		// ADD ERROR HERE TO BOXES FOR INCORRECT LOGIN
 	};
@@ -102,6 +112,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 				self.single = response.data;
 				// save user id
 				userObj.id = response.data._id;
+				// ctrl.getDay is true
+				self.getDay = true;
 			}
 			else {
 				console.log("User is not logged in");
@@ -367,8 +379,9 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
 
 	this.displayItinerary = function() {
-		console.log("displayItinerary is running!")
-		this.displayItin = false;
+		console.log("displayItinerary is running!");
+		this.itinerary = true;
+		this.getDay = false;
 	};
 
 
@@ -376,6 +389,12 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	this.getMap = function() {
 		console.log('GET MAP FUNCTION IS RUNNING')
 		this.displayMap = false;
+	};
+
+
+	// SHOW EDIT FORM
+	this.editProfile = function() {
+		this.userEdit = !this.userEdit;
 	};
 
 

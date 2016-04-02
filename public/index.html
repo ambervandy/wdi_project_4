@@ -50,7 +50,7 @@
 		</div>
 		<ul>
 			<li ng-click="ctrl.logout()">LOGOUT</li>
-			<li>EDIT</li>
+			<li ng-click="ctrl.editProfile()">EDIT</li>
 			<li>DAYS</li>
 		</ul>
 	</header>	
@@ -93,9 +93,9 @@
 
 
 	<!-- EDIT & DELETE PROFILE -->
-	<div class="main" ng-if="ctrl.user">
-		<h2>EDIT</h2>
+	<div class="main" ng-if="ctrl.userEdit">
 		<div class="form_wrapper">
+			<h2>EDIT</h2>
 			<form id="editProfile" ng-submit="ctrl.submitEdit()"></br>
 				<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}"></br>
 				<input type="text" ng-model="ctrl.editData.username" placeholder="{{ ctrl.single.username }}"></br>
@@ -105,31 +105,39 @@
 			<form>
 				<button ng-if="ctrl.user" ng-click="ctrl.deleteUser()">DELETE ACCOUNT</button>
 			</form>
+			<p ng-click="ctrl.editProfile();">GO BACK</p>
 		</div>
 	</div>
 	
 
 
 	<!-- GET DAY -->
-	<div class="main" ng-if="ctrl.user">
+	<div class="main" ng-if="ctrl.getDay">
 		<div class="content_wrapper">
-			<form ng-submit="ctrl.searchByNeighb(input)">
-				<input type="text" ng-model="ctrl.input" placeholder="LET ME KNOW WHAT NEIGHBORHOOD">
-				<button ng-click="ctrl.displayItinerary()">GET ME ACTIVITY IN THIS NEIGHBORHOOD</button>
+			<form ng-submit="ctrl.searchByNeighb(input); ctrl.displayItinerary()">
+				<input id="neighborhood" type="text" ng-model="ctrl.input" placeholder="CHOOSE A NEIGHBORHOOD"></br>
 			</form>
-
-			<h3>-- OR --</h3>
-
-			<form>
-				<button ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">GET ME A RANDOM ACTIVITY</button>
+			<div id="total_width">
+				<div id="center_h3">
+					<div id="h3_div">
+						<h3>OR</h3>
+					</div>
+				</div>
+			</div>
+			<form id="random_button">
+				<button ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">RANDOMIZE</button>
 			</form>
 		</div>
+		<!-- <div id="form_nav" ng-click="ctrl.displayItinerary()">
+			<p id="arrow">&#xE82D;<p>
+			<p>GO<p>	
+		</div> -->
 	</div>
 
 
-<!-- ng-class="(ctrl.displayItin)?'hideItin':''" -->
+
 	<!-- LIST DAY INFO -->
-	<div class="main" ng-if="ctrl.user">
+	<div class="main" ng-if="ctrl.itinerary">
 		<div class="content_wrapper">
 			<h2>ITINERARY</h2>
 			<h4>NEIGHBORHOOD</h2>
@@ -161,7 +169,7 @@
 
 <!-- ng-class="(ctrl.displayMap)?'hideMap':''" -->
 	<!-- DIRECTIONS AND MAP -->
-	<div class="main" ng-if="ctrl.user">
+	<div class="main" ng-if="ctrl.map">
 		<div class="content_wrapper">
 			<h2>GETTING THERE</h2>
 			<div id="mapContainer">
@@ -174,7 +182,7 @@
 
 
 	<!-- SHOW USER DAYS -->
-	<div class="main" ng-if="ctrl.user">
+	<div class="main" ng-if="ctrl.days">
 		<div class="content_wrapper">
 			<div class="single_day">	
 				<div ng-repeat="day in ctrl.single.days track by $index">
