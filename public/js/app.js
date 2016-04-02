@@ -298,6 +298,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log(response);
 			// push to days without reloading
 			$scope.ctrl.single.days.push(response.data);
+			// SOMETHING CSS NEEDS TO HAPPEN WHEN YOU ADD A DAY TO USER DAYS
 		},
 		// error
 		function(err) {
@@ -380,15 +381,20 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
 	this.displayItinerary = function() {
 		console.log("displayItinerary is running!");
+		// show itinerary
 		this.itinerary = true;
+		// hide getDay
 		this.getDay = false;
 	};
 
 
 	// SHOW MAP
 	this.getMap = function() {
-		console.log('GET MAP FUNCTION IS RUNNING')
-		this.displayMap = false;
+		console.log('GET MAP FUNCTION IS RUNNING');
+		// hide itinerary
+		this.itinerary = false;
+		// show map
+		this.map = true;
 	};
 
 

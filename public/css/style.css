@@ -143,13 +143,22 @@ li {
 }
 
 #button_div {
-	margin-bottom: 20em;
+	margin-bottom: 3em;
 }	
 
 #button_div > button {
 	width: 50%;
 	padding: 1em;
 	margin: 2em 0 0 0;
+}
+
+.map_wrapper {
+	margin-top: 10em;
+	text-align: center;
+}
+
+.map_wrapper > h2 {
+	margin-bottom: 2em;
 }
 
 
