@@ -1,21 +1,19 @@
 <html ng-app="weekendApp">
 <head>
 	<title>Weekend App</title>
-	<!-- FAVICON -->
-	<link rel="shortcut icon" href="http://res.cloudinary.com/dmjtck2cd/image/upload/v1457620127/destinations/favicon.png" type="image/png">
+	<link rel="shortcut icon" href="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459712527/destinations/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js" charset="utf-8"></script>
-	<!-- ANGULAR ANIMATE -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.4.5/angular-animate.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 </head>
 
 
-<body ng-controller="userController as ctrl">
+<body ng-controller="userController as ctrl" onLoad="document.formIn.emailInput.focus();">
 
 
 	<!-- FACEBOOK -->
@@ -58,8 +56,8 @@
 	<div class="main" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'':'hideForm'">
 		<div class="form_wrapper">
 			<h1>WEEKENDER</h1>
-			<form id="logIn">
-				<input ng-model="ctrl.loginData.email" type="text" placeholder="email"></br>
+			<form id="logIn" name="formIn">
+				<input name="emailInput" ng-model="ctrl.loginData.email" type="text" placeholder="email"></br>
 				<input ng-model="ctrl.loginData.password" type="password" placeholder="password"></br>
 				<button ng-click="ctrl.logIn()" class="formButton">&nbsp;&nbsp;&nbsp; LOG IN &nbsp;&nbsp;&nbsp;</button></br>
 				<p class="open" ng-click="ctrl.formShow()">not a user? sign up</p>
@@ -105,7 +103,7 @@
 
 
 	<!-- GET DAY -->
-	<div class="main" ng-if="ctrl.getDay">
+	<div class="main" ng-if="ctrl.getDay" class="animate">
 		<div class="content_wrapper">
 			<form ng-submit="ctrl.searchByNeighb(input); ctrl.displayItinerary()">
 				<input id="neighborhood" type="text" ng-model="ctrl.input" placeholder="CHOOSE NEIGHBORHOOD"></br>
@@ -118,7 +116,7 @@
 				</div>
 			</div>
 			<form>
-				<button id="random_button" ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">RANDOMIZE</button>
+				<button id="random_button" ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">CHOOSE FOR ME</button>
 			</form>
 		</div>
 	</div>

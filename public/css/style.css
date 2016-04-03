@@ -23,16 +23,22 @@ body {
 h1, h2 {
 	color: white;
 	margin-bottom: 1em;
+	cursor: default;
 }
 
 h3 {
 	color: #b1e0d6;
 	margin-bottom: 1em;
+	cursor: default;
 }
 
 a {
 	text-decoration: none;
 	color: white;
+}
+
+p {
+	cursor: default;
 }
 
 .main {
@@ -45,7 +51,7 @@ a {
 
 header {
 	width: 100%;
-	background-color: #7bc8b3;
+	background-color: #fce1a4;
 	position: fixed;
 	top: 0;
 	padding: 2em 0 2em 0;
@@ -57,6 +63,7 @@ header {
 	float: left;
 	margin-left: 5%;
 	color: #3f665d;
+	cursor: default;
 }
 
 ul {
@@ -68,6 +75,7 @@ li {
 	float: right;
 	color: #3f665d;
 	margin: 0 5% 0 5%;
+	cursor: default;
 }
 
 li:hover, #left:hover {
@@ -99,17 +107,22 @@ li:active, #left:active {
 
 .map_wrapper > p {
 	margin-top: 3em;
+	color: white;
 }
 
 
 /*-------------------------- LOGIN FORMS ----------------------------*/
+
+.hideForm {
+	display: none;
+}
 
 .open {
 	color: white;
 }
 
 .open:hover {
-	color: #5f998c;
+	color: #fce1a4;
 }
 
 h1 {
@@ -336,6 +349,32 @@ button:active {
 .single_day > div > button:hover {
 	background-color: #b1e0d6;
 }
+
+
+/*------------------------ ANIMATIONS --------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
