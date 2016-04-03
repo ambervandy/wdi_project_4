@@ -96,8 +96,15 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			userObj.id = response.data._id;
 			// ctrl.getDay is true
 			self.getDay = true;
+		},
+		function(err) {
+			// make login error true to change class
+	    	self.loginError = true;
+			// create variable for element with login-status id
+			var box = document.getElementById('login-status');
+			// add text to p tag
+	    	box.innerHTML = "Incorrect username or password";
 		});
-		// ADD ERROR HERE TO BOXES FOR INCORRECT LOGIN
 	};
 
 
@@ -413,7 +420,10 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	this.editProfile = function() {
 		this.userEdit = !this.userEdit;
 		this.displaySingleDay = false;
-		this.getDay = true;
+		this.map = false;
+		this.itinerary = false;
+		this.days = false;
+		this.getDay = false;
 	};
 
 
@@ -442,8 +452,10 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 
 	// GET ALL USER DAYS
 	this.getAllDays = function() {
+		this.userEdit = false;
 		this.getDay = false;
 		this.getMap = false;
+		this.map = false;
 		this.itinerary = false;
 		this.displaySingleDay = false;
 		this.days = true;

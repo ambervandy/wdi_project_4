@@ -4,7 +4,7 @@
 	<!-- FAVICON -->
 	<link rel="shortcut icon" href="http://res.cloudinary.com/dmjtck2cd/image/upload/v1457620127/destinations/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- GOOGLE FONTS -->
+	<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js" charset="utf-8"></script>
 	<!-- ANGULAR ANIMATE -->
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
@@ -48,7 +48,7 @@
 			<li ng-click="ctrl.editProfile()">EDIT</li>
 			<li ng-click="ctrl.getAllDays()">DAYS</li>
 		</ul>
-	</header>	
+	</header>
 
 	
 
@@ -57,13 +57,13 @@
 	<!-- LOG IN -->
 	<div class="main" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'':'hideForm'">
 		<div class="form_wrapper">
-			<h2>WEEKENDER</h2>
+			<h1>WEEKENDER</h1>
 			<form id="logIn">
 				<input ng-model="ctrl.loginData.email" type="text" placeholder="email"></br>
 				<input ng-model="ctrl.loginData.password" type="password" placeholder="password"></br>
 				<button ng-click="ctrl.logIn()" class="formButton">&nbsp;&nbsp;&nbsp; LOG IN &nbsp;&nbsp;&nbsp;</button></br>
-				<!-- <p id="login-status"></p> -->
-				<p ng-click="ctrl.formShow()">not a user? sign up</p>
+				<p class="open" ng-click="ctrl.formShow()">not a user? sign up</p>
+				<p class="open" id="login-status"></p>
 			</form>	
 		</div>
 	</div>
@@ -73,13 +73,13 @@
 	<!-- SIGN UP -->
 	<div class="main" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'hideForm':''">
 		<div class="form_wrapper">
-			<h2>WEEKENDER</h2>
+			<h1>WEEKENDER</h1>
 			<form id="signUp">
 				<input type="text" ng-model="ctrl.signUpData.email" placeholder="email"></br>
 				<input type="password" ng-model="ctrl.signUpData.password" placeholder="password"></br>
 				<input type="text" ng-model="ctrl.signUpData.username" placeholder="username"></br>
 				<button ng-click="ctrl.signUp()" class="formButton">&nbsp;&nbsp;SIGN UP&nbsp;&nbsp;</button></br>
-				<p ng-click="ctrl.formShow()">already a user? sign in.</p>
+				<p class="open" ng-click="ctrl.formShow()">already a user? sign in.</p>
 			</form>
 		</div>
 	</div>
@@ -89,7 +89,7 @@
 	<!-- EDIT & DELETE PROFILE -->
 	<div class="main" ng-if="ctrl.userEdit">
 		<div class="form_wrapper">
-			<h2>EDIT</h2>
+			<h1>EDIT</h1>
 			<form id="editProfile" ng-submit="ctrl.submitEdit()"></br>
 				<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}"></br>
 				<input type="text" ng-model="ctrl.editData.username" placeholder="{{ ctrl.single.username }}"></br>
@@ -109,7 +109,7 @@
 	<div class="main" ng-if="ctrl.getDay">
 		<div class="content_wrapper">
 			<form ng-submit="ctrl.searchByNeighb(input); ctrl.displayItinerary()">
-				<input id="neighborhood" type="text" ng-model="ctrl.input" placeholder="CHOOSE A NEIGHBORHOOD"></br>
+				<input id="neighborhood" type="text" ng-model="ctrl.input" placeholder="CHOOSE NEIGHBORHOOD"></br>
 			</form>
 			<div id="total_width">
 				<div id="center_h3">
@@ -118,8 +118,8 @@
 					</div>
 				</div>
 			</div>
-			<form id="random_button">
-				<button ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">RANDOMIZE</button>
+			<form>
+				<button id="random_button" ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">RANDOMIZE</button>
 			</form>
 		</div>
 	</div>
@@ -137,29 +137,29 @@
 				<button ng-click="ctrl.addDay()">SAVE TO DAYS</button>
 			</div>
 
-			<div class="it_div">	
+			<a href="{{ ctrl.brunch.url }}" target="_blank"><div class="it_div">	
 				<h3>BRUNCH</h3>
-				<a href="{{ ctrl.brunch.url }}" target="_blank"><b>{{ ctrl.brunch.name }}</b></a></br></br>
+				<b>{{ ctrl.brunch.name }}</b></br></br>
 				<img src="{{ ctrl.brunch.rating_img_url }}">
-			</div>
+			</div></a>
 
-		    <div class="it_div">
+		    <a href="{{ ctrl.activity.url }}" target="_blank"><div class="it_div">
 				<h3>ACTIVITY</h3>
-				<a href="{{ ctrl.activity.url }}" target="_blank"><b>{{ ctrl.activity.name }}</b></a></br></br>
+				<b>{{ ctrl.activity.name }}</b></br></br>
 				<img src="{{ ctrl.activity.rating_img_url }}">
-			</div>
+			</div></a>
 
-			<div class="it_div">
+			<a href="{{ ctrl.drinks.url }}" target="_blank"><div class="it_div">
 				<h3>DRINKS</h3>
-				<a href="{{ ctrl.drinks.url }}" target="_blank"><b>{{ ctrl.drinks.name }}</b></a></br></br>
+				<b>{{ ctrl.drinks.name }}</b></br></br>
 				<img src="{{ ctrl.drinks.rating_img_url }}">
-			</div>
+			</div></a>
 
-			<div class="it_div">
+			<a href="{{ ctrl.dinner.url }}" target="_blank"><div class="it_div">
 				<h3>DINNER</h3>
-				<a href="{{ ctrl.dinner.url }}" target="_blank"><b>{{ ctrl.dinner.name }}</b></a></br></br>
+				<b>{{ ctrl.dinner.name }}</b></br></br>
 				<img src="{{ ctrl.dinner.rating_img_url }}">
-			</div>
+			</div></a>
 		</div>
 	</div>	
 

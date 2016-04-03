@@ -20,22 +20,27 @@ router.get('/', function(req, res) {
 
 // NEW / SIGNUP
 router.post('/signup', passport.authenticate('local-signup', {
+	// redirect if failed new user
     failureRedirect: '/'}), function(req, res){
     console.log("USER STUFF HERE   " + req.user);
+    // send back user data
     res.send(req.user);
 });
 
 
 // LOGIN
 router.post('/login', passport.authenticate('local-login'), function(req, res){
+	// send back user data
     res.send(req.user);
 });
 
 
 // IS LOGGED IN
 router.get('/isLoggedIn', function(req, res) {
+	// if user is authenticated
 	if(req.isAuthenticated() == true) {
 		console.log("USER IS LOGGED IN");
+		// send back user data
 		res.send(req.user);
 	}
 	else {
@@ -48,10 +53,13 @@ router.get('/isLoggedIn', function(req, res) {
 // EDIT USER PROFILE
 router.post('/edit', function(req, res) {
 	console.log("REQ.BODY: ", req.body.editData);
+	// find the user
 	User.findById(req.user.id, function(err, data) {
+		// fulfill each model requirement and save
 		data.username = req.body.editData.username;
 		data.email = req.body.editData.email;
 		data.save();
+		// send back user data
 		res.send(data);
 	});
 });
@@ -63,7 +71,9 @@ router.get('/logout', function(req, res) {
 	console.log("Logging out!");
 	// log user out
 	req.session.destroy();
+	// no user data
 	req.user = null;
+	// sends back null
 	res.send(req.user);
 });
 
@@ -76,16 +86,20 @@ router.put('/:id', function(req, res) {
 	res.locals.usertrue = (req.user.id == req.params.id);
 	// create new day and set values
 	var newDay = new Day();
+	// fulfills all day model requirements
 	newDay.brunch = req.body.brunch;
 	newDay.drinks = req.body.drinks;
 	newDay.dinner = req.body.dinner;
 	newDay.activity = req.body.activity;
+	// create a date field with today's date
 	newDay.date = new Date();
+	// save day
 	newDay.save();
-	// find user and push newDay into days
+	// find user and push newDay into days and save
 	User.findById(req.params.id, function(err, data) {
 		data.days.push(newDay);
 		data.save();
+		// send back day
 		res.send(newDay);
 	});
 });
@@ -95,7 +109,9 @@ router.put('/:id', function(req, res) {
 // GET SINGLE DAY
 router.get('/days/:id', function(req, res) {
 	console.log("DAY ID: ", req.params.id);
+	// find the day by params
 	Day.findById(req.params.id, function(err, data) {
+		// send back day
 		res.send(data);
 	});
 });	
@@ -107,7 +123,9 @@ router.delete('/delete/:id', function(req, res) {
 	console.log("REQ.USER: ", req.user);
 	console.log(req.user.id);
 	console.log("REQ.PARAMS: ",req.params.id);
+	// find the user by params
 	User.findById(req.user.id, function(err, user) {
+		// if params = the user id from all users then splice from users
 		for (var i = 0; i < user.days.length; i++) {
 			if (user.days[i]._id == req.params.id) {
 				user.days.splice(i, 1);
@@ -122,9 +140,11 @@ router.delete('/delete/:id', function(req, res) {
 
 // DELETE USER
 router.delete('/:id', function(req, res) {
+	// find users
 	User.findByIdAndRemove(req.params.id, function(err, user) {
 		console.log('DELETED');
-		// can we redirect to somewhere?
+		// send back nothing
+		res.send('deleted!');
 	});
 });
 

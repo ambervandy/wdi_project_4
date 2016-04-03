@@ -1,5 +1,18 @@
+/*colors
+lightest: #b1e0d6;
+light: #7bc8b3;
+medium: #5f998c;
+dark: #3f665d */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
 body {
-	background-color: papayawhip;
+	background-color: #7bc8b3;
+	font-family: 'Karla', sans-serif;
+	text-transform: uppercase;
 }
 
 @font-face {
@@ -7,40 +20,38 @@ body {
 	src: url('../fonts/fontello/font/fontello.ttf');
 }
 
-#map {
-	height: 380px;
-	width: 80%;
-	display: inline-block;
-	border: solid 0.5px black;
-	border-radius: 1%;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
+h1, h2, p {
+	color: white;
+	margin-bottom: 1em;
 }
 
-input[type=text]:focus {
-	outline: none;
+h3 {
+	color: #b1e0d6;
+	margin-bottom: 1em;
 }
 
-.hideForm {
-	display: none;
+a {
+	text-decoration: none;
+	color: white;
 }
 
-/*.hideMap {
-	display: none;
-}*/
 
-/*.hideItin {
-	display: none;
-}*/
+/*-------------------------- NAV ----------------------------*/
+
 header {
 	width: 100%;
+	background-color: #7bc8b3;
 	position: fixed;
 	top: 0;
-	padding: 1em 0 1em 0;
+	padding: 2em 0 2em 0;
+	z-index: 10;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 #left {
 	float: left;
-	margin: 1em 0 0 1em;
+	margin-left: 5%;
+	color: #3f665d;
 }
 
 ul {
@@ -50,7 +61,91 @@ ul {
 li {
 	display: inline-block;
 	float: right;
+	color: #3f665d;
 	margin: 0 5% 0 5%;
+}
+
+
+/*-------------------------- MAP ----------------------------*/
+
+#map {
+	height: 380px;
+	width: 80%;
+	display: inline-block;
+	border: solid 0.5px #3f665d;
+	/*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);*/
+}
+
+
+
+/*-------------------------- LOGIN FORMS ----------------------------*/
+
+.open {
+	color: white;
+}
+
+.open:hover {
+	color: #5f998c;
+}
+
+h1 {
+	font-size: 250%;
+}
+
+input[type=text], input[type=password], button {
+	font-family: 'Karla', sans-serif;
+}
+
+input[type=text], input[type=password] {
+	width: 60%;
+	font-size: 150%;
+	margin: 0.5em 0 0.5em 0;
+	background: 0 0;
+	border: 0;
+	text-align: center;
+	text-transform: uppercase;
+	color: #3f665d;
+}
+
+input[type=text]:focus, input[type=password] {
+	outline: none;
+}
+
+::-webkit-input-placeholder {
+   color: #5f998c;
+}
+
+
+
+/*-------------------------- BUTTONS ----------------------------*/
+
+button {
+	font-size: 0.75em;
+	padding: 1em;
+	width: 30%;
+	margin: 2em 0 2em 0;
+	border: 1px white solid;
+	color: white;
+	background: 0;
+	outline: none;
+}
+
+
+button:hover {
+	background-color: #3f665d;
+	border: 1px solid #3f665d;
+}
+
+button:active {
+	background-color: #5f998c;
+	border: 1px solid #5f998c;
+}
+
+
+/*-------------------------- ----------------------------*/
+
+.hideForm {
+	display: none;
 }
 
 .main {
@@ -65,31 +160,24 @@ li {
 }
 
 .content_wrapper {
-	/*width: 100%;*/
 	text-align: center;
 }
 
 .content_wrapper:first-child {
-	margin-top: 15em;
-}
-
-#form_nav {
-	font-family: 'fontello';
-    margin-top: -19%;
+	margin-top: 13em;
 }
 
 #form_nav > * {
 	text-align: right;
 }
 
-#arrow {
-	font-size: 1.5em;
-}
+
+/*--------------------------- NEIGHBORHOOD INPUT --------------------------*/
 
 #neighborhood {
 	width: 80%;
 	font-size: 175%;
-	margin-bottom: 0.5em;
+	margin-bottom: 2em;
 	background: 0 0;
 	border: 0;
 	text-align: center;
@@ -100,10 +188,13 @@ li {
 	width: 100%;
 }
 
+
+/*--------------------------- MIDDLE OR --------------------------*/
+
 #center_h3 {
-    width: 70px;
-    height: 70px;
-    border: white solid 2px;
+    width: 40px;
+    height: 40px;
+    /*border: #b1e0d6 solid 1px;*/
     border-radius: 50%;
     margin: 0 auto;
 }
@@ -115,20 +206,23 @@ li {
 }
 
 #h3_div > h3 {
-	color: white;
+	color: #b1e0d6;
 	display: table-cell;
     vertical-align: middle;
 }
 
+
+/*-------------------------- RANDOMIZE BUTTON --------------------------*/
+
 #random_button {
 	margin-top: 3em;
+	width: 40%;
+	font-size: 150%;
 }
 
-#random_button > button {
-	font-size: 1em;
-	padding: 1em;
-	width: 40%;
-}
+
+
+/*-------------------------- ITINERARY --------------------------*/
 
 .itinerary_wrapper {
 	margin-top: 10em;
@@ -136,9 +230,21 @@ li {
 }
 
 .it_div {
-	border: 1px black solid;
-	margin: 1em 20% 1em 20%;
+	background-color: #5f998c;
+	border: 0.25px #3f665d solid;
+	/*margin: 1em 20% 1em 20%;*/
 	padding: 0.5em 5% 2em 5%;
+}
+
+.it_div:hover {
+	background-color: #3f665d;
+	border: 1px #3f665d solid;
+}
+
+.it_div:active {
+	background-color: white;
+	border: 1px white solid;
+	color: #3f665d;
 }
 
 #button_div {
