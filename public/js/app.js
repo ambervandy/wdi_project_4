@@ -1,4 +1,4 @@
-var app = angular.module('weekendApp', []);
+var app = angular.module('weekendApp', ['ngAnimate']);
 
 // USER CONTROLLER
 app.controller('userController', ['$http', '$scope', function($http, $scope) {
