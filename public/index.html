@@ -88,14 +88,13 @@
 
 	<!-- EDIT & DELETE PROFILE -->
 	<div class="main" ng-if="ctrl.userEdit">
-		<div class="form_wrapper">
+		<div class="form_wrapper" id="edit_form">
 			<h1>EDIT</h1>
 			<form id="editProfile" ng-submit="ctrl.submitEdit()"></br>
 				<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}"></br>
 				<input type="text" ng-model="ctrl.editData.username" placeholder="{{ ctrl.single.username }}"></br>
 				<button class="formButton">SUBMIT</button></br>
 			</form>
-			</br>
 			<form>
 				<button ng-if="ctrl.user" ng-click="ctrl.deleteUser()">DELETE ACCOUNT</button>
 			</form>
@@ -185,18 +184,22 @@
 
 	<!-- SHOW USER DAYS -->
 	<div class="main" ng-if="ctrl.days">
-		<div class="day_wrapper">
-			<h2>MY DAYS</h2>
+		<div class="days_wrapper">
+			<h1>MY DAYS</h1>
 			<div class="all_days">
 				<div class="single_day" ng-repeat="day in ctrl.single.days track by $index">
 					<div ng-click="ctrl.getSingleDay(day)">
 						<h3>{{ day.brunch.location.neighborhoods[0] }}</h3>
-						<p>{{ day.date | date: 'mediumDate'}}</p>
-						<p>BRUNCH:</br>{{ day.brunch.name }}</p>
-						<p>ACTIVITY:</br>{{ day.activity.name }}</p>
-						<p>DRINKS:</br>{{ day.drinks.name }}</p>
-						<p>DINNER:</br>{{ day.dinner.name }}</p>
-						<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button>
+						<span>{{ day.date | date: 'mediumDate'}}</span>
+						<p>BRUNCH</p>
+						<b>{{ day.brunch.name }}</b>
+						<p>ACTIVITY</p>
+						<b>{{ day.activity.name }}</b>
+						<p>DRINKS</p>
+						<b>{{ day.drinks.name }}</b>
+						<p>DINNER</p>
+						<b>{{ day.dinner.name }}</b></br>
+						<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button></br>
 						<button class="share" ng-click="ctrl.shareMe(day)">SHARE TO FACEBOOK</button>
 					</div>
 				</div>
@@ -214,29 +217,29 @@
 			<h3>{{ ctrl.singleDay.activity.location.neighborhoods[0] }}</h3></br>
 			<p>{{ ctrl.singleDay.date | date: 'mediumDate' }}</p>
 
-			<div class="it_div">	
+			<a href="{{ ctrl.singleDay.brunch.url }}" target="_blank"><div class="it_div">	
 				<h3>BRUNCH</h3>
-				<a href="{{ ctrl.singleDay.brunch.url }}" target="_blank"><b>{{ ctrl.singleDay.brunch.name }}</b></a></br></br>
+				<b>{{ ctrl.singleDay.brunch.name }}</b></br></br>
 				<img src="{{ ctrl.singleDay.brunch.rating_img_url }}">
-			</div>
+			</div></a>
 
-		    <div class="it_div">
+		   <a href="{{ ctrl.singleDay.activity.url }}" target="_blank"> <div class="it_div">
 				<h3>ACTIVITY</h3>
-				<a href="{{ ctrl.singleDay.activity.url }}" target="_blank"><b>{{ ctrl.singleDay.activity.name }}</b></a></br></br>
+				<b>{{ ctrl.singleDay.activity.name }}</b></br></br>
 				<img src="{{ ctrl.singleDay.activity.rating_img_url }}">
-			</div>
+			</div></a>
 
-			<div class="it_div">
+			<a href="{{ ctrl.singleDay.drinks.url }}" target="_blank"><div class="it_div">
 				<h3>DRINKS</h3>
-				<a href="{{ ctrl.singleDay.drinks.url }}" target="_blank"><b>{{ ctrl.singleDay.drinks.name }}</b></a></br></br>
+				<b>{{ ctrl.singleDay.drinks.name }}</b></br></br>
 				<img src="{{ ctrl.singleDay.drinks.rating_img_url }}">
-			</div>
+			</div></a>
 
-			<div class="it_div">
+			<a href="{{ ctrl.singleDay.dinner.url }}" target="_blank"><div class="it_div">
 				<h3>DINNER</h3>
-				<a href="{{ ctrl.singleDay.dinner.url }}" target="_blank"><b>{{ ctrl.singleDay.dinner.name }}</b></a></br></br>
+				<b>{{ ctrl.singleDay.dinner.name }}</b></br></br>
 				<img src="{{ ctrl.singleDay.dinner.rating_img_url }}">
-			</div>
+			</div></a>
 		</div>
 		<p ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</p>
 	</div>	

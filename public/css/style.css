@@ -20,7 +20,7 @@ body {
 	src: url('../fonts/fontello/font/fontello.ttf');
 }
 
-h1, h2, p {
+h1, h2 {
 	color: white;
 	margin-bottom: 1em;
 }
@@ -33,6 +33,11 @@ h3 {
 a {
 	text-decoration: none;
 	color: white;
+}
+
+.main {
+	height: 100%;
+	width: 100%;
 }
 
 
@@ -65,6 +70,13 @@ li {
 	margin: 0 5% 0 5%;
 }
 
+li:hover, #left:hover {
+	color: #b1e0d6;
+}
+
+li:active, #left:active {
+	color: white;
+}
 
 /*-------------------------- MAP ----------------------------*/
 
@@ -76,6 +88,18 @@ li {
 	/*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);*/
 }
 
+.map_wrapper {
+	margin-top: 10em;
+	text-align: center;
+}
+
+.map_wrapper > h2 {
+	margin-bottom: 2em;
+}
+
+.map_wrapper > p {
+	margin-top: 3em;
+}
 
 
 /*-------------------------- LOGIN FORMS ----------------------------*/
@@ -115,6 +139,11 @@ input[type=text]:focus, input[type=password] {
    color: #5f998c;
 }
 
+.form_wrapper {
+	text-align: center;
+	margin-top: 15em;
+	width: 100%;
+}
 
 
 /*-------------------------- BUTTONS ----------------------------*/
@@ -142,35 +171,20 @@ button:active {
 }
 
 
-/*-------------------------- ----------------------------*/
+/*-------------------------- EDIT FORM ----------------------------*/
 
-.hideForm {
-	display: none;
+#edit_form > h1 {
+	margin-top: -2em;
 }
 
-.main {
-	height: 100%;
-	width: 100%;
+#edit_form > p {
+	margin-top: 2em;
+	color: white;
 }
 
-.form_wrapper {
-	text-align: center;
-	margin-top: 15em;
-	width: 100%;
+#edit_form > p:hover {
+	color: #5f998c;
 }
-
-.content_wrapper {
-	text-align: center;
-}
-
-.content_wrapper:first-child {
-	margin-top: 13em;
-}
-
-#form_nav > * {
-	text-align: right;
-}
-
 
 /*--------------------------- NEIGHBORHOOD INPUT --------------------------*/
 
@@ -186,6 +200,14 @@ button:active {
 
 #total_width {
 	width: 100%;
+}
+
+.content_wrapper {
+	text-align: center;
+}
+
+.content_wrapper:first-child {
+	margin-top: 13em;
 }
 
 
@@ -225,14 +247,19 @@ button:active {
 /*-------------------------- ITINERARY --------------------------*/
 
 .itinerary_wrapper {
-	margin-top: 10em;
+	margin: 10em 0 10em 0;
 	text-align: center;
+}
+
+.itinerary_wrapper > p {
+	color: #3f665d;
+	margin-bottom: 2em;
 }
 
 .it_div {
 	background-color: #5f998c;
 	border: 0.25px #3f665d solid;
-	/*margin: 1em 20% 1em 20%;*/
+	margin: 1em 20% 1em 20%;
 	padding: 0.5em 5% 2em 5%;
 }
 
@@ -242,9 +269,9 @@ button:active {
 }
 
 .it_div:active {
-	background-color: white;
-	border: 1px white solid;
-	color: #3f665d;
+	background-color: #b1e0d6;
+	border: 1px #3f665d solid;
+	color: #5f998c;
 }
 
 #button_div {
@@ -257,38 +284,58 @@ button:active {
 	margin: 2em 0 0 0;
 }
 
-.map_wrapper {
-	margin-top: 10em;
-	text-align: center;
-}
 
-.map_wrapper > h2 {
-	margin-bottom: 2em;
-}
+/*---------------------------- ALL USER DAYS ----------------------------*/
 
-.map_wrapper > p {
-	margin-top: 3em;
-}
-
-.day_wrapper {
+.days_wrapper {
 	text-align: center;
 	width: 100%;
 	margin: 10em 0 10em 0;
 }
 
-.single_day {
-	border: black 1px solid;
-	padding: 1em 1em 2em 1em;
-	margin: 0 10% 0 10%;
+.days_wrapper > h1 {
+	margin: 2em 0 2em 0;
 }
 
+.single_day {
+	background-color: #5f998c;
+	border: 0.25px #3f665d solid;
+	margin: 1em 10% 1em 10%;
+	padding: 1em 5% 2em 5%;
+}
 
+.single_day:hover {
+	background-color: #3f665d;
+	border: 1px #3f665d solid;
+}
 
+.single_day:active {
+	background-color: #b1e0d6;
+	border: 1px #b1e0d6; solid;
+	color: #5f998c;
+}
 
+.single_day > div > span {
+	color: #b1e0d6;
+}
+	
+.single_day > div > p {
+	color: #b1e0d6;
+	margin-top: 1em;
+}
 
+.single_day > div > b {
+	color: white;
+}
 
+.single_day > div > button {
+	width: 50%;
+	margin-bottom: 0.5em;
+}
 
-
+.single_day > div > button:hover {
+	background-color: #b1e0d6;
+}
 
 
 
