@@ -1,8 +1,23 @@
 console.log("This works!");
 
 
+
 // DYNAMICALLY ADDING THE GOOGLE MAPS API SCRIPT TO HEADER
 function loadAPI() {
+
+
+	// make sure the map is false every time we approach it
+	var thisMap = document.querySelector('script[src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUEpj1aqPq0_0wU5s1SQGf5B-382gVGKA&callback=initMap"]');
+	if (thisMap) {
+		console.log('it exists already!');
+		thisMap = null;
+		console.log(thisMap);
+	}
+	else {
+		console.log("it doesn't exist yet");
+	};
+
+	// create the script for the map
     var script = document.createElement("script");
     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAUEpj1aqPq0_0wU5s1SQGf5B-382gVGKA&callback=initMap";
     script.type = "text/javascript";
@@ -107,7 +122,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
 
 
-
+// RELOAD PAGE ON LOGOUT
+var reload = function() {
+	window.location.reload(true); 
+};
 
 
 
