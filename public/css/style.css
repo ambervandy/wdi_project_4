@@ -9,7 +9,7 @@ body {
 
 #map {
 	height: 380px;
-	width: 90%;
+	width: 80%;
 	display: inline-block;
 	border: solid 0.5px black;
 	border-radius: 1%;
@@ -166,9 +166,17 @@ li {
 	margin-top: 3em;
 }
 
+.day_wrapper {
+	text-align: center;
+	width: 100%;
+	margin: 10em 0 10em 0;
+}
 
-
-
+.single_day {
+	border: black 1px solid;
+	padding: 1em 1em 2em 1em;
+	margin: 0 10% 0 10%;
+}
 
 
 

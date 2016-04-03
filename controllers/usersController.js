@@ -81,6 +81,7 @@ router.put('/:id', function(req, res) {
 	newDay.dinner = req.body.dinner;
 	newDay.activity = req.body.activity;
 	newDay.date = new Date();
+	newDay.save();
 	// find user and push newDay into days
 	User.findById(req.params.id, function(err, data) {
 		data.days.push(newDay);
@@ -88,6 +89,16 @@ router.put('/:id', function(req, res) {
 		res.send(newDay);
 	});
 });
+
+
+
+// GET SINGLE DAY
+router.get('/days/:id', function(req, res) {
+	console.log("DAY ID: ", req.params.id);
+	Day.findById(req.params.id, function(err, data) {
+		res.send(data);
+	});
+});	
 
 
 

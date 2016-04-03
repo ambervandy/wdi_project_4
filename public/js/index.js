@@ -6,6 +6,7 @@ function loadAPI() {
     var script = document.createElement("script");
     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAUEpj1aqPq0_0wU5s1SQGf5B-382gVGKA&callback=initMap";
     script.type = "text/javascript";
+    script.setAttribute("id", "mapScript");
     document.getElementsByTagName("head")[0].appendChild(script);
 };
 
@@ -103,7 +104,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	    }
 	  });
 }
-
 
 
 

@@ -21,6 +21,12 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	// HIDE USER DAYS UNTIL WANTED
 	this.days = false;
 
+	// HIDE SINGLE DAY UNTIL WANTED
+	this.displaySingleDay = false;
+
+	// HIDE BACK TO TODAY UNLESS WE'VE GOTTEN A SINGLE DAY
+	this.weGotDay = false;
+
 	// VAR FOR OPEN TABLE
 	var otBrunchLink = '';
 	var otDinnerLink = '';
@@ -155,6 +161,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			self.activity = response.data
 			// add activity to dayObj
 			dayObj.activity = response.data;
+			// we got day is true
+			self.weGotDay = true;
 
 			// get lat,lng for brunch, drinks, dinner
 			var lat = response.data.location.coordinate.latitude;
@@ -190,6 +198,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			self.activity = response.data
 			// add activity to dayObj
 			dayObj.activity = response.data;
+			// we got day is true
+			self.weGotDay = true;
 
 			// get lat,lng to pass to brunch, drinks, and dinner
 			var lat = response.data.location.coordinate.latitude;
@@ -379,6 +389,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	};
 
 
+	// DISPLAY ITINERARY
 	this.displayItinerary = function() {
 		console.log("displayItinerary is running!");
 		// show itinerary
@@ -401,6 +412,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	// SHOW EDIT FORM
 	this.editProfile = function() {
 		this.userEdit = !this.userEdit;
+		this.displaySingleDay = false;
+		this.getDay = true;
 	};
 
 
@@ -410,6 +423,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		this.map = false;
 		this.itinerary = false;
 		this.days = false;
+		this.displaySingleDay = false;
 	};
 
 
@@ -420,6 +434,7 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		this.itinerary = false;
 		this.days = false;
 		this.user = false;
+		this.displaySingleDay = false;
 		this.loginData.email = '';
 		this.loginData.password = '';
 	};
@@ -430,10 +445,40 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		this.getDay = false;
 		this.getMap = false;
 		this.itinerary = false;
+		this.displaySingleDay = false;
 		this.days = true;
 	};
 
 
+	// SHOW SPECIFIC DAY
+	this.getSingleDay = function(input) {
+		console.log(input);
+		console.log(input._id);
+		$http({
+			method: "GET",
+			url: '/users/days/' + input._id
+		}).then(
+		// success
+		function(response) {
+			console.log(response);
+			self.singleDay = response.data;
+			// hide days list
+			self.days = false;
+			// display single day
+			self.displaySingleDay = true;
+		});
+	};
+
+
+	// GO BACK TO TODAY'S DAY
+	this.today = function() {
+		console.log("this.today is running");
+		console.log(dayObj);
+		this.displaySingleDay = false;
+		this.days = false;
+		this.itinerary = true;
+	};
+ 
 	
 
 

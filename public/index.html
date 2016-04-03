@@ -47,6 +47,7 @@
 			<li ng-click="ctrl.logout(); ctrl.toLogIn()">LOGOUT</li>
 			<li ng-click="ctrl.editProfile()">EDIT</li>
 			<li ng-click="ctrl.getAllDays()">DAYS</li>
+			<!-- <li ng-click="ctrl.newSearch()">NEW</li> -->
 		</ul>
 	</header>	
 
@@ -184,7 +185,7 @@
 			<div id="mapContainer">
 				<div id="map"></div>
 			</div>
-			<p ng-click="ctrl.getMap()">BACK TO DAY</p>
+			<p ng-click="ctrl.getMap()" onclick="unloadAPI();">BACK TO DAY</p>
 		</div>
 		<input type="hidden" id="brunchAddress" value="{{ ctrl.brunch.location.display_address.join(', ') }}">
 		<input type="hidden" id="activityAddress" value="{{ ctrl.activity.location.display_address.join(', ') }}">
@@ -197,21 +198,71 @@
 
 	<!-- SHOW USER DAYS -->
 	<div class="main" ng-if="ctrl.days">
-		<div class="content_wrapper">
-			<div class="single_day">	
-				<div ng-repeat="day in ctrl.single.days track by $index">
-					<p>NEIGHBORHOOD</p>
-					<p>DATE</p>
-					<p>BRUNCH: {{ day.brunch.name }}</p>
-					<p>ACTIVITY: {{ day.activity.name }}</p>
-					<p>DRINKS: {{ day.drinks.name }}</p>
-					<p>DINNER: {{ day.dinner.name }}</p>
-					<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button>
-					<button class="share" ng-click="ctrl.shareMe(day)">SHARE TO FACEBOOK</button>
+		<div class="day_wrapper">
+			<h2>MY DAYS</h2>
+			<div class="all_days">
+				<div class="single_day" ng-repeat="day in ctrl.single.days track by $index">
+					<div ng-click="ctrl.getSingleDay(day)">
+						<h3>{{ day.brunch.location.neighborhoods[0] }}</h3>
+						<p>{{ day.date | date: 'mediumDate'}}</p>
+						<p>BRUNCH:</br>{{ day.brunch.name }}</p>
+						<p>ACTIVITY:</br>{{ day.activity.name }}</p>
+						<p>DRINKS:</br>{{ day.drinks.name }}</p>
+						<p>DINNER:</br>{{ day.dinner.name }}</p>
+						<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button>
+						<button class="share" ng-click="ctrl.shareMe(day)">SHARE TO FACEBOOK</button>
+					</div>
 				</div>
 			</div>
+			<p ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</p>
 		</div>
 	</div>
+
+
+
+	<!-- SINGLE DAY -->
+	<div class="main" ng-if="ctrl.displaySingleDay">
+		<div class="itinerary_wrapper">
+			<h2>ITINERARY</h2>
+			<h3>{{ ctrl.singleDay.activity.location.neighborhoods[0] }}</h3></br>
+
+			<div id="button_div">
+				<button ng-click="ctrl.getMap()" id="getDirections" onclick="loadAPI();">GET DIRECTIONS</button></br>
+			</div>
+
+			<div class="it_div">	
+				<h3>BRUNCH</h3>
+				<a href="{{ ctrl.singleDay.brunch.url }}" target="_blank"><b>{{ ctrl.singleDay.brunch.name }}</b></a></br></br>
+				<img src="{{ ctrl.singleDay.brunch.rating_img_url }}">
+				<!-- <p>{{ ctrl.brunch.display_phone }}</p> -->
+			   <!--  <a href="{{ ctrl.otBrunchLink }}" target="_blank"><p>reservation</p></a> -->	
+			    <!-- need to add img of rating when we create the objects holding brunch, dinner, drinks, activity -->
+			</div>
+
+		    <div class="it_div">
+				<h3>ACTIVITY</h3>
+				<a href="{{ ctrl.singleDay.activity.url }}" target="_blank"><b>{{ ctrl.singleDay.activity.name }}</b></a></br></br>
+				<img src="{{ ctrl.singleDay.activity.rating_img_url }}">
+				<!-- <p>{{ ctrl.dinner.display_phone }}</p> -->
+			</div>
+
+			<div class="it_div">
+				<h3>DRINKS</h3>
+				<a href="{{ ctrl.singleDay.drinks.url }}" target="_blank"><b>{{ ctrl.singleDay.drinks.name }}</b></a></br></br>
+				<img src="{{ ctrl.singleDay.drinks.rating_img_url }}">
+				<!-- <p>{{ ctrl.dinner.display_phone }}</p> -->
+			</div>
+
+			<div class="it_div">
+				<h3>DINNER</h3>
+				<a href="{{ ctrl.singleDay.dinner.url }}" target="_blank"><b>{{ ctrl.singleDay.dinner.name }}</b></a></br></br>
+				<img src="{{ ctrl.singleDay.dinner.rating_img_url }}">
+				<!-- <p>{{ ctrl.dinner.display_phone }}</p> -->
+				<!-- <a href="{{ ctrl.otDinnerLink }}" target="_blank"><p>reservation</p></a> -->
+			</div>
+		</div>
+		<p ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</p>
+	</div>	
 
 </body>
 </html>
