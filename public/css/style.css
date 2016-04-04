@@ -402,6 +402,12 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 .delete, .share {
 	background-color: #bd586c !important;
 	border: none;
+	width: 50%;
+	margin: 1em;
+}
+
+.delete {
+	margin-top: 5em;
 }
 
 .delete:hover, .share:hover {
@@ -444,7 +450,7 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 
 	.it_div {
 		width: 215px;
-		height: 215px;
+		height: 230px;
 		display: inline-table;
 		margin: 8px;
 	}

@@ -349,14 +349,16 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	};
 
 
-	// FACEBOOK SHARE BUTTON (NEED TO FIGURE OUT WHAT TO SHARE)
-	// this.shareMe = function(item) {
-	// 	console.log(item.gifUrl);
-	// 	FB.ui({
-	// 		method: 'share',
-	// 		href: 'http://localhost:3000',
-	// 		}, function(response){});
-	// }
+	// FACEBOOK SHARE BUTTON
+	this.shareMe = function(item) {
+		console.log(item.activity.url);
+		FB.ui({
+			method: 'share',
+			href: item.activity.url,
+			}, function(response){
+				console.log('shared!');
+			});
+	};
 
 
 

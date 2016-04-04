@@ -198,7 +198,7 @@
 			<div class="all_days">
 				<div class="single_day" ng-repeat="day in ctrl.single.days track by $index">
 					<div ng-click="ctrl.getSingleDay(day)">
-						<h2>{{ day.brunch.location.neighborhoods[0] }}</h2>
+						<h2>{{ day.activity.location.neighborhoods[0] }}</h2>
 						<span>{{ day.date | date: 'mediumDate'}}</span>
 						<p>BRUNCH</p>
 						<b>{{ day.brunch.name }}</b>
@@ -208,9 +208,9 @@
 						<b>{{ day.drinks.name }}</b>
 						<p>DINNER</p>
 						<b>{{ day.dinner.name }}</b></br>
-						<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button></br>
-						<button class="share" ng-click="ctrl.shareMe(day)">SHARE TO FACEBOOK</button>
 					</div>
+					<button class="delete" ng-click="ctrl.deleteDay(day, $index)">DELETE</button></br>
+					<button class="share" ng-click="ctrl.shareMe(day)">SHARE TO FACEBOOK</button>
 				</div>
 			</div>
 			<button class="back" ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</button>
