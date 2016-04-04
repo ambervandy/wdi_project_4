@@ -1,7 +1,7 @@
 <html ng-app="weekendApp">
 <head>
 	<title>Weekend App</title>
-	<link rel="shortcut icon" href="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459712527/destinations/favicon.png" type="image/png">
+	<link rel="shortcut icon" href="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459780580/destinations/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
@@ -40,7 +40,9 @@
 
 	<!-- HEADER + NAV -->
 	<header ng-if="ctrl.user">
-		<div id="left" ng-click="ctrl.getNew()">WEEKENDER</div>
+		<div id="left" ng-click="ctrl.getNew()">
+			<img id="nav_apple" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459781803/destinations/appleicon_black.png" onmouseover="this.src='http://res.cloudinary.com/dmjtck2cd/image/upload/v1459779343/destinations/appleicon.png'" onmouseout="this.src='http://res.cloudinary.com/dmjtck2cd/image/upload/v1459781803/destinations/appleicon_black.png'">
+		</div>
 		<ul>
 			<li ng-click="ctrl.logout(); ctrl.toLogIn()" onclick="reload();">LOGOUT</li>
 			<li ng-click="ctrl.editProfile()">EDIT</li>
@@ -53,8 +55,9 @@
 	<!-- SIGN UP AND LOGIN FORMS -->
 
 	<!-- LOG IN -->
-	<div class="main" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'':'hideForm'">
+	<div class="main forms" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'':'hideForm'">
 		<div class="form_wrapper">
+			<img id="apple" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459779343/destinations/appleicon.png">
 			<h1>WEEKENDER</h1>
 			<form id="logIn" name="formIn">
 				<input name="emailInput" ng-model="ctrl.loginData.email" type="text" placeholder="email"></br>
@@ -69,8 +72,9 @@
 
 
 	<!-- SIGN UP -->
-	<div class="main" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'hideForm':''">
+	<div class="main forms" ng-if="!ctrl.user" ng-class="(ctrl.displayForm)?'hideForm':''">
 		<div class="form_wrapper">
+			<img id="apple" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459779343/destinations/appleicon.png">
 			<h1>WEEKENDER</h1>
 			<form id="signUp">
 				<input type="text" ng-model="ctrl.signUpData.email" placeholder="email"></br>
@@ -85,8 +89,9 @@
 
 
 	<!-- EDIT & DELETE PROFILE -->
-	<div class="main" ng-if="ctrl.userEdit">
+	<div class="main forms" ng-if="ctrl.userEdit">
 		<div class="form_wrapper" id="edit_form">
+			<img id="apple" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459779343/destinations/appleicon.png">
 			<h1>EDIT</h1>
 			<form id="editProfile" ng-submit="ctrl.submitEdit()"></br>
 				<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}"></br>
@@ -103,20 +108,16 @@
 
 
 	<!-- GET DAY -->
-	<div class="main" ng-if="ctrl.getDay" class="animate-if">
+	<div class="main inside" ng-if="ctrl.getDay" class="animate-if">
 		<div class="content_wrapper">
-			<form ng-submit="ctrl.searchByNeighb(input); ctrl.displayItinerary()">
+			<form>
+				<button ng-if="!ctrl.choose_neighborhood" id="neighborhood_button" ng-click="ctrl.getNeighborhoodForm()">CHOOSE NEIGHBORHOOD</button>
+			</form>
+			<form ng-if="ctrl.choose_neighborhood" ng-submit="ctrl.searchByNeighb(input); ctrl.displayItinerary()">
 				<input id="neighborhood" type="text" ng-model="ctrl.input" placeholder="CHOOSE NEIGHBORHOOD"></br>
 			</form>
-			<div id="total_width">
-				<div id="center_h3">
-					<div id="h3_div">
-						<h3>OR</h3>
-					</div>
-				</div>
-			</div>
 			<form>
-				<button id="random_button" ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">CHOOSE FOR ME</button>
+				<button ng-if="!ctrl.choose_neighborhood" id="random_button" ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">CHOOSE FOR ME</button>
 			</form>
 		</div>
 	</div>

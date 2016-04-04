@@ -10,14 +10,18 @@ dark: #3f665d */
 }
 
 body {
-	background-color: #7bc8b3;
 	font-family: 'Karla', sans-serif;
 	text-transform: uppercase;
 }
 
+
 @font-face {
 	font-family: 'fontello';
 	src: url('../fonts/fontello/font/fontello.ttf');
+}
+
+#apple {
+	width: 15%;
 }
 
 h1, h2 {
@@ -46,24 +50,30 @@ p {
 	width: 100%;
 }
 
+.inside {
+	background-color: ebedea;
+}
+
 
 /*-------------------------- NAV ----------------------------*/
 
 header {
 	width: 100%;
-	background-color: #fce1a4;
+	background-color: #5f998c;
 	position: fixed;
 	top: 0;
 	padding: 2em 0 2em 0;
 	z-index: 10;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.12);
+    opacity: 0.8;
 }
 
 #left {
+	display: inline;
 	float: left;
 	margin-left: 5%;
-	color: #3f665d;
 	cursor: default;
+	width: 40%;
 }
 
 ul {
@@ -73,17 +83,22 @@ ul {
 li {
 	display: inline-block;
 	float: right;
-	color: #3f665d;
+	color: black;
 	margin: 0 5% 0 5%;
 	cursor: default;
+	font-weight: bold;
 }
 
-li:hover, #left:hover {
-	color: #b1e0d6;
+li:hover {
+	color: white;
 }
 
 li:active, #left:active {
 	color: white;
+}
+
+#nav_apple {
+	width: 10%;
 }
 
 /*-------------------------- MAP ----------------------------*/
@@ -154,8 +169,12 @@ input[type=text]:focus, input[type=password] {
 
 .form_wrapper {
 	text-align: center;
-	margin-top: 15em;
 	width: 100%;
+	padding-top: 12em;
+}
+
+.forms {
+	background-color: #7bc8b3;
 }
 
 
@@ -220,7 +239,7 @@ button:active {
 }
 
 .content_wrapper:first-child {
-	margin-top: 13em;
+	padding-top: 13em;
 }
 
 

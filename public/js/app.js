@@ -416,6 +416,13 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	};
 
 
+	// GET NEIGHBORHOOD FORM
+	this.getNeighborhoodForm = function() {
+		console.log('button form is working!');
+		this.choose_neighborhood = !this.choose_neighborhood;
+	};
+
+
 	// SHOW EDIT FORM
 	this.editProfile = function() {
 		this.userEdit = !this.userEdit;
