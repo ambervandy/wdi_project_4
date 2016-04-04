@@ -3,7 +3,7 @@
 	<title>Weekend App</title>
 	<link rel="shortcut icon" href="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459780580/destinations/favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link href='https://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Palanquin:400,700,300|Karla' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	<script src="https://code.angularjs.org/1.4.5/angular-animate.js"></script>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
@@ -110,11 +110,11 @@
 	<!-- GET DAY -->
 	<div class="main inside" ng-if="ctrl.getDay" class="animate-if">
 		<div class="content_wrapper">
-			<form>
+			<form id="top_form">
 				<button ng-if="!ctrl.choose_neighborhood" id="neighborhood_button" ng-click="ctrl.getNeighborhoodForm()">CHOOSE NEIGHBORHOOD</button>
 			</form>
-			<form ng-if="ctrl.choose_neighborhood" ng-submit="ctrl.searchByNeighb(input); ctrl.displayItinerary()">
-				<input id="neighborhood" type="text" ng-model="ctrl.input" placeholder="CHOOSE NEIGHBORHOOD"></br>
+			<form id="neighborhood_form" ng-if="ctrl.choose_neighborhood" ng-submit="ctrl.searchByNeighb(input); ctrl.displayItinerary()">
+				<input id="neighborhood" type="text" ng-model="ctrl.input" placeholder="TYPE NEIGHBORHOOD HERE"></br>
 			</form>
 			<form>
 				<button ng-if="!ctrl.choose_neighborhood" id="random_button" ng-click="ctrl.searchYelp(); ctrl.displayItinerary()">CHOOSE FOR ME</button>
@@ -125,7 +125,7 @@
 
 
 	<!-- ITINERARY -->
-	<div class="main" ng-if="ctrl.itinerary">
+	<div class="main inside" ng-if="ctrl.itinerary">
 		<div class="itinerary_wrapper">
 			<h2>ITINERARY</h2>
 			<h3>{{ ctrl.activity.location.neighborhoods[0] }}</h3></br>
@@ -170,7 +170,7 @@
 			<div id="mapContainer">
 				<div id="map"></div>
 			</div>
-			<p ng-click="ctrl.getMap()">BACK TO DAY</p>
+			<button class="back" ng-click="ctrl.getMap()">BACK TO DAY</button>
 		</div>
 		<input type="hidden" id="brunchAddress" value="{{ ctrl.brunch.location.display_address.join(', ') }}">
 		<input type="hidden" id="activityAddress" value="{{ ctrl.activity.location.display_address.join(', ') }}">
@@ -184,7 +184,7 @@
 	<!-- SHOW USER DAYS -->
 	<div class="main" ng-if="ctrl.days">
 		<div class="days_wrapper">
-			<h1>MY DAYS</h1>
+			<h2>MY DAYS</h2>
 			<div class="all_days">
 				<div class="single_day" ng-repeat="day in ctrl.single.days track by $index">
 					<div ng-click="ctrl.getSingleDay(day)">
@@ -203,7 +203,7 @@
 					</div>
 				</div>
 			</div>
-			<p ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</p>
+			<button class="back" ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</button>
 		</div>
 	</div>
 
@@ -213,8 +213,8 @@
 	<div class="main" ng-if="ctrl.displaySingleDay">
 		<div class="itinerary_wrapper">
 			<h2>ITINERARY</h2>
-			<h3>{{ ctrl.singleDay.activity.location.neighborhoods[0] }}</h3></br>
-			<p>{{ ctrl.singleDay.date | date: 'mediumDate' }}</p>
+			<h3 id="single_day_h3">{{ ctrl.singleDay.activity.location.neighborhoods[0] }}</h3></br>
+			<p id="single_day_p">{{ ctrl.singleDay.date | date: 'mediumDate' }}</p>
 
 			<a href="{{ ctrl.singleDay.brunch.url }}" target="_blank"><div class="it_div">	
 				<h3>BRUNCH</h3>

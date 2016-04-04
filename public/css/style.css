@@ -51,15 +51,17 @@ p {
 }
 
 .inside {
-	background-color: ebedea;
+	background-color: #f2f4f1;
 }
+
+
 
 
 /*-------------------------- NAV ----------------------------*/
 
 header {
 	width: 100%;
-	background-color: #5f998c;
+	background-color: #969696;
 	position: fixed;
 	top: 0;
 	padding: 2em 0 2em 0;
@@ -117,12 +119,17 @@ li:active, #left:active {
 }
 
 .map_wrapper > h2 {
-	margin-bottom: 2em;
+	margin: 2em 0 2em 0;
+	color: #3a3a3a;
 }
 
 .map_wrapper > p {
 	margin-top: 3em;
-	color: white;
+	color: #858585;
+}
+
+.back {
+	margin-top: 5em !important;
 }
 
 
@@ -218,6 +225,8 @@ button:active {
 	color: #5f998c;
 }
 
+
+
 /*--------------------------- NEIGHBORHOOD INPUT --------------------------*/
 
 #neighborhood {
@@ -228,6 +237,13 @@ button:active {
 	border: 0;
 	text-align: center;
 	text-transform: uppercase;
+	font-family: 'Palanquin', sans-serif;
+	font-weight: bold;
+	color: #1f5e4a;
+}
+
+input[type="text"]#neighborhood::-webkit-input-placeholder {
+   color: #54cba5;
 }
 
 #total_width {
@@ -239,39 +255,39 @@ button:active {
 }
 
 .content_wrapper:first-child {
-	padding-top: 13em;
+	padding-top: 10em;
 }
 
-
-/*--------------------------- MIDDLE OR --------------------------*/
-
-#center_h3 {
-    width: 40px;
-    height: 40px;
-    /*border: #b1e0d6 solid 1px;*/
-    border-radius: 50%;
-    margin: 0 auto;
+#neighborhood_form {
+	margin-top: 8em;
 }
 
-#h3_div {
-    display: table;
-    width: 100%;
-    height: 100%;
+#top_form {
+	margin-top: 3em;
 }
 
-#h3_div > h3 {
-	color: #b1e0d6;
-	display: table-cell;
-    vertical-align: middle;
-}
 
 
 /*-------------------------- RANDOMIZE BUTTON --------------------------*/
 
-#random_button {
-	margin-top: 3em;
-	width: 60%;
-	font-size: 150%;
+#random_button, #neighborhood_button, #button_div > button, .back, .single_day > div > button {
+	width: 50%;
+	padding: 1em;
+	margin: 2em 0 0 0;
+	color: #999999;
+	border-color: #999999;
+}
+
+
+#random_button:hover, #neighborhood_button:hover, #button_div > button:hover, .back:hover, .single_day > div > button:hover {
+	color: white;
+	background-color: #53a381;
+	border-color: #53a381;
+}
+
+#random_button:active, #neighborhood_button:active, #button_div > button:active, .back:active, .single_day > div > button:active {
+	background-color: #337b64;
+	border-color: #337b64;
 }
 
 
@@ -279,42 +295,41 @@ button:active {
 /*-------------------------- ITINERARY --------------------------*/
 
 .itinerary_wrapper {
-	margin: 10em 0 10em 0;
+	padding: 13em 0 50em 0;
 	text-align: center;
+	background-color: #ededed;
 }
 
-.itinerary_wrapper > p {
-	color: white;
-	margin-bottom: 2em;
+.itinerary_wrapper > h3, .itinerary_wrapper > a > div > h3 {
+	color: #858585;
 }
+
+
+.itinerary_wrapper > h2, .itinerary_wrapper > a > div > b {
+	color: #3a3a3a;
+}
+
 
 .it_div {
-	background-color: #5f998c;
-	border: 0.25px #3f665d solid;
-	margin: 1em 20% 1em 20%;
-	padding: 0.5em 5% 2em 5%;
+	background-color: #d6d6d6;
+	margin: 0.5em 20% 0.5em 20%;
+	padding: 2em 5% 3em 5%;
 }
 
 .it_div:hover {
-	background-color: #3f665d;
-	border: 1px #3f665d solid;
+	background-color: white;
 }
 
 .it_div:active {
-	background-color: #b1e0d6;
-	border: 1px #3f665d solid;
-	color: #5f998c;
+	background-color: #747474;
 }
+
 
 #button_div {
 	margin-bottom: 3em;
 }	
 
-#button_div > button {
-	width: 50%;
-	padding: 1em;
-	margin: 2em 0 0 0;
-}
+
 
 
 /*---------------------------- ALL USER DAYS ----------------------------*/
@@ -322,56 +337,63 @@ button:active {
 .days_wrapper {
 	text-align: center;
 	width: 100%;
-	margin: 10em 0 10em 0;
+	padding: 10em 0 10em 0;
+	background-color: #ededed;
 }
 
-.days_wrapper > h1 {
+.days_wrapper > h2 {
 	margin: 2em 0 2em 0;
+	color: #3a3a3a;
 }
 
 .days_wrapper > p {
-	color: white;
+	color: #3a3a3a;
 }
 
 .single_day {
-	background-color: #5f998c;
-	border: 0.25px #3f665d solid;
+	background-color: #d6d6d6;
 	margin: 1em 10% 1em 10%;
 	padding: 1em 5% 2em 5%;
 }
 
 .single_day:hover {
-	background-color: #3f665d;
-	border: 1px #3f665d solid;
+	background-color: white;
 }
 
 .single_day:active {
-	background-color: #b1e0d6;
-	border: 1px #b1e0d6; solid;
-	color: #5f998c;
+	background-color: #747474;
+}
+
+.single_day > div > h3 {
+	color: #858585;
 }
 
 .single_day > div > span {
-	color: #b1e0d6;
+	color: #3a3a3a;
 }
 	
 .single_day > div > p {
-	color: #b1e0d6;
+	color: #858585;
 	margin-top: 1em;
 }
 
 .single_day > div > b {
-	color: white;
+	color: #3a3a3a;
 }
 
 .single_day > div > button {
-	width: 50%;
 	margin-bottom: 0.5em;
 }
 
-.single_day > div > button:hover {
-	background-color: #b1e0d6;
+#single_day_h3 {
+	margin: 0;
 }
+
+#single_day_p {
+	margin-bottom: 3em;
+}
+
+
 
 
 /*------------------------ ANIMATIONS --------------------------*/
