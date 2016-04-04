@@ -138,25 +138,37 @@
 			<a href="{{ ctrl.brunch.url }}" target="_blank"><div class="it_div">	
 				<h3>BRUNCH</h3>
 				<b>{{ ctrl.brunch.name }}</b></br></br>
-				<img src="{{ ctrl.brunch.rating_img_url }}">
+				<img src="{{ ctrl.brunch.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.brunch.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
 
 		    <a href="{{ ctrl.activity.url }}" target="_blank"><div class="it_div">
 				<h3>ACTIVITY</h3>
 				<b>{{ ctrl.activity.name }}</b></br></br>
-				<img src="{{ ctrl.activity.rating_img_url }}">
+				<img src="{{ ctrl.activity.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.activity.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
 
 			<a href="{{ ctrl.drinks.url }}" target="_blank"><div class="it_div">
 				<h3>DRINKS</h3>
 				<b>{{ ctrl.drinks.name }}</b></br></br>
-				<img src="{{ ctrl.drinks.rating_img_url }}">
+				<img src="{{ ctrl.drinks.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.drinks.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
 
 			<a href="{{ ctrl.dinner.url }}" target="_blank"><div class="it_div">
 				<h3>DINNER</h3>
 				<b>{{ ctrl.dinner.name }}</b></br></br>
-				<img src="{{ ctrl.dinner.rating_img_url }}">
+				<img src="{{ ctrl.dinner.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.dinner.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
 		</div>
 	</div>	
@@ -188,7 +200,7 @@
 			<div class="all_days">
 				<div class="single_day" ng-repeat="day in ctrl.single.days track by $index">
 					<div ng-click="ctrl.getSingleDay(day)">
-						<h3>{{ day.brunch.location.neighborhoods[0] }}</h3>
+						<h2>{{ day.brunch.location.neighborhoods[0] }}</h2>
 						<span>{{ day.date | date: 'mediumDate'}}</span>
 						<p>BRUNCH</p>
 						<b>{{ day.brunch.name }}</b>
@@ -219,28 +231,40 @@
 			<a href="{{ ctrl.singleDay.brunch.url }}" target="_blank"><div class="it_div">	
 				<h3>BRUNCH</h3>
 				<b>{{ ctrl.singleDay.brunch.name }}</b></br></br>
-				<img src="{{ ctrl.singleDay.brunch.rating_img_url }}">
+				<img src="{{ ctrl.singleDay.brunch.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.singleDay.brunch.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
 
 		   <a href="{{ ctrl.singleDay.activity.url }}" target="_blank"> <div class="it_div">
 				<h3>ACTIVITY</h3>
 				<b>{{ ctrl.singleDay.activity.name }}</b></br></br>
-				<img src="{{ ctrl.singleDay.activity.rating_img_url }}">
+				<img src="{{ ctrl.singleDay.activity.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.singleDay.activity.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
 
 			<a href="{{ ctrl.singleDay.drinks.url }}" target="_blank"><div class="it_div">
 				<h3>DRINKS</h3>
 				<b>{{ ctrl.singleDay.drinks.name }}</b></br></br>
-				<img src="{{ ctrl.singleDay.drinks.rating_img_url }}">
+				<img src="{{ ctrl.singleDay.drinks.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.singleDay.drinks.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
 
 			<a href="{{ ctrl.singleDay.dinner.url }}" target="_blank"><div class="it_div">
 				<h3>DINNER</h3>
 				<b>{{ ctrl.singleDay.dinner.name }}</b></br></br>
-				<img src="{{ ctrl.singleDay.dinner.rating_img_url }}">
+				<img src="{{ ctrl.singleDay.dinner.rating_img_url_large }}">
+				<div class="category">
+					<p ng-repeat="item in ctrl.singleDay.dinner.categories">{{ item[0] }}</p>
+				</div>
 			</div></a>
+			<button class="back" ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</button>
 		</div>
-		<p ng-if="ctrl.weGotDay" ng-click="ctrl.today()">BACK TO TODAY</p>
 	</div>	
 
 </body>

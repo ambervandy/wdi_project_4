@@ -309,6 +309,17 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 	color: #3a3a3a;
 }
 
+.itinerary_wrapper > a > div > b {
+	font-size: 150%;
+}
+
+.category {
+	margin-top: 1em;
+}
+
+.category > p {
+	color: #858585;
+}
 
 .it_div {
 	background-color: #d6d6d6;
@@ -317,7 +328,7 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 }
 
 .it_div:hover {
-	background-color: white;
+	background-color: #f7f7f7;
 }
 
 .it_div:active {
@@ -353,18 +364,18 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 .single_day {
 	background-color: #d6d6d6;
 	margin: 1em 10% 1em 10%;
-	padding: 1em 5% 2em 5%;
+	padding: 1.5em 5% 2em 5%;
 }
 
 .single_day:hover {
-	background-color: white;
+	background-color: #f7f7f7;
 }
 
 .single_day:active {
 	background-color: #747474;
 }
 
-.single_day > div > h3 {
+.single_day > div > h2 {
 	color: #858585;
 }
 
