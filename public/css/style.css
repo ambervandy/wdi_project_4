@@ -75,11 +75,13 @@ header {
 	float: left;
 	margin-left: 5%;
 	cursor: default;
-	width: 40%;
+	width: 20%;
 }
 
 ul {
 	list-style: none;
+	width: 79%;
+	padding-left: 20%;
 }
 
 li {
@@ -100,7 +102,7 @@ li:active, #left:active {
 }
 
 #nav_apple {
-	width: 10%;
+	width: 25%;
 }
 
 /*-------------------------- MAP ----------------------------*/
@@ -177,7 +179,7 @@ input[type=text]:focus, input[type=password] {
 .form_wrapper {
 	text-align: center;
 	width: 100%;
-	padding-top: 12em;
+	padding-top: 11em;
 }
 
 .forms {
@@ -212,9 +214,6 @@ button:active {
 
 /*-------------------------- EDIT FORM ----------------------------*/
 
-#edit_form > h1 {
-	margin-top: -2em;
-}
 
 #edit_form > p {
 	margin-top: 2em;
@@ -274,8 +273,8 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 	width: 50%;
 	padding: 1em;
 	margin: 2em 0 0 0;
-	color: #999999;
-	border-color: #999999;
+	color: #3e3e3e;
+	border-color: #3e3e3e;
 }
 
 
@@ -353,7 +352,7 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 }
 
 .days_wrapper > h2 {
-	margin: 2em 0 2em 0;
+	margin: 2em 0 3em 0;
 	color: #3a3a3a;
 }
 
@@ -409,7 +408,7 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 
 /*------------------------ ANIMATIONS --------------------------*/
 
-.animate-if.ng-enter, .animate-if.ng-leave {
+/*.animate-if.ng-enter, .animate-if.ng-leave {
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
 
@@ -421,13 +420,81 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 .animate-if.ng-leave,
 .animate-if.ng-enter.ng-enter-active {
   opacity:1;
+}*/
+
+@media (min-width: 430px) {  /* <---------------------------------------------- MIN-WIDTH 430px */
+
+	.it_div {
+		width: 215px;
+		height: 215px;
+		display: inline-table;
+		margin: 8px;
+	}
+
+	.itinerary_wrapper {
+		padding: 13em 5% 50em 5%;
+	}
+
+}
+
+
+@media (min-width: 600px) {  /* <---------------------------------------------- MIN-WIDTH 600px */
+
+	#nav_apple {
+		width: 30px;
+	}
+
 }
 
 
 
 
+@media (min-width: 650px) {  /* <---------------------------------------------- MIN-WIDTH 650px */
+
+	.formButton, #delete_user {
+		width: 169px;
+	}
+
+}
+
+@media (min-width: 700px) {  /* <---------------------------------------------- MIN-WIDTH 700px */
+
+	#random_button, #neighborhood_button, #button_div > button, .back, .single_day > div > button {
+		width: 324px;
+	}
+
+}
+
+@media (min-width: 850px) {  /* <---------------------------------------------- MIN-WIDTH 850px */
+
+	#apple {
+		width: 127.5px;
+	}
+
+	.single_day {
+		width: 595px;
+		margin: 2em auto;
+	}
+
+}
 
 
+@media (min-width: 900px) {  /* <---------------------------------------------- MIN-WIDTH 900px */
+
+	#map {
+		width: 720px;
+	}
+
+}
+
+
+@media (min-width: 1100px) {  /* <---------------------------------------------- MIN-WIDTH 1100px */
+
+	.itinerary_wrapper {
+		padding: 13em 20% 50em 20%;
+	}
+
+}
 
 
 

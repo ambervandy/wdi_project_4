@@ -91,7 +91,6 @@
 	<!-- EDIT & DELETE PROFILE -->
 	<div class="main forms" ng-if="ctrl.userEdit">
 		<div class="form_wrapper" id="edit_form">
-			<img id="apple" src="http://res.cloudinary.com/dmjtck2cd/image/upload/v1459779343/destinations/appleicon.png">
 			<h1>EDIT</h1>
 			<form id="editProfile" ng-submit="ctrl.submitEdit()"></br>
 				<input type="text" ng-model="ctrl.editData.email" placeholder="{{ ctrl.single.email }}"></br>
@@ -99,9 +98,8 @@
 				<button class="formButton">SUBMIT</button></br>
 			</form>
 			<form>
-				<button ng-if="ctrl.user" ng-click="ctrl.deleteUser()">DELETE ACCOUNT</button>
+				<button id="delete_user" ng-if="ctrl.user" ng-click="ctrl.deleteUser()">DELETE ACCOUNT</button>
 			</form>
-			<p ng-click="ctrl.editProfile();">GO BACK</p>
 		</div>
 	</div>
 	

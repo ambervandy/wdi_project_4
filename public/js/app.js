@@ -149,6 +149,11 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		}).then(
 		// success
 		function(response) {
+			self.loginData.email = null;
+			self.loginData.password = null;
+			self.signUpData.password = null;
+			self.signUpData.email = null;
+			self.signUpData.username = null;
 			console.log("logged out!");
 		});
 	};
@@ -368,6 +373,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			console.log($scope);
 			$scope.ctrl.single.username = response.data.username;
 			$scope.ctrl.single.email = response.data.email;
+			self.userEdit = false;
+			self.getDay = true;
 		},
 		// err
 		function(err){
@@ -386,6 +393,9 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 		// success
 		function(response) {
 			console.log('DELETED');
+			self.userEdit = false;
+			self.user = false;
+			self.logout();
 		});
 	};
 
