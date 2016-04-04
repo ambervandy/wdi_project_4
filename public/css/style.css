@@ -268,16 +268,16 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 	width: 50%;
 	padding: 1em;
 	margin: 2em 0 0 0;
-	color: #3e3e3e;
-	border-color: #3e3e3e;
-	background-color: #f7f7f7;
+	color: white;
+	background-color: #53a381;
+	border-color: #53a381;
 }
 
 
 #random_button:hover, #neighborhood_button:hover, #button_div > button:hover, .back:hover, .single_day > div > button:hover {
-	color: white;
-	background-color: #53a381;
-	border-color: #53a381;
+	color: #3e3e3e;
+	border-color: #3e3e3e;
+	background-color: #f7f7f7;
 }
 
 #random_button:active, #neighborhood_button:active, #button_div > button:active, .back:active, .single_day > div > button:active {
@@ -399,8 +399,22 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 	margin-bottom: 3em;
 }
 
+.delete, .share {
+	background-color: #bd586c !important;
+	border: none;
+}
 
+.delete:hover, .share:hover {
+	color: #3e3e3e;
+	border-color: #3e3e3e;
+	background-color: #f7f7f7 !important;
+}
 
+.delete:active, .share:active {
+	background-color: #9d3449;
+	border: none;
+	color: white;
+}
 
 /*------------------------ ANIMATIONS --------------------------*/
 
@@ -469,6 +483,14 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 
 }
 
+@media (min-width: 750px) {  /* <---------------------------------------------- MIN-WIDTH 750px */
+
+	#neighborhood {
+		font-size: 225%;
+	}
+
+}
+
 @media (min-width: 850px) {  /* <---------------------------------------------- MIN-WIDTH 850px */
 
 	#apple {
@@ -489,6 +511,10 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 		width: 720px;
 	}
 
+	#neighborhood {
+		font-size: 300%;
+	}
+
 }
 
 
@@ -496,6 +522,10 @@ input[type="text"]#neighborhood::-webkit-input-placeholder {
 
 	.itinerary_wrapper {
 		padding: 13em 20% 50em 20%;
+	}
+
+	#neighborhood {
+		font-size: 375%;
 	}
 
 }
