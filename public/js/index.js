@@ -1,7 +1,6 @@
 console.log("This works!");
 
 
-
 // DYNAMICALLY ADDING THE GOOGLE MAPS API SCRIPT TO HEADER
 function loadAPI() {
 
@@ -128,6 +127,13 @@ var reload = function() {
 };
 
 
+
+
+// CHANGE SAVE DAY BUTTON AFTER SAVING A DAY
+var saveDay = function() {
+	console.log("clicked!");
+	$('#saveButton').css({ "background-color": "#bd586c", "border-color": "#bd586c" }).text("SAVED");
+}
 
 
 

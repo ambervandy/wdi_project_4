@@ -27,6 +27,9 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 	// HIDE BACK TO TODAY UNLESS WE'VE GOTTEN A SINGLE DAY
 	this.weGotDay = false;
 
+	// NO CLASS
+	// this.getFirstDay = false;
+
 	// VAR FOR OPEN TABLE
 	var otBrunchLink = '';
 	var otDinnerLink = '';
@@ -96,6 +99,8 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			userObj.id = response.data._id;
 			// ctrl.getDay is true
 			self.getDay = true;
+
+			// self.getFirstDay = true;
 		},
 		function(err) {
 			// make login error true to change class
