@@ -110,7 +110,7 @@ router.get('/brunch/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ 	term: 'breakfast_brunch',
+		{ 	term: 'breakfast_brunch,restaurants',
 		  	ll: req.params.id,
 		  	radius_filter: 800,
 		  	sort: sortNum,
@@ -139,7 +139,7 @@ router.get('/brunch/:id', function(req, res) {
 
 			if (data.businesses[num] == null) {
 				console.log("BRUNCH IS NULL");
-				num = 0;
+				
 			}
 
 			// send back brunch data
@@ -159,7 +159,7 @@ router.get('/drinks/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ 	term: 'bars,pubs,lounges',
+		{ 	term: 'bars,pubs,lounges,restaurants',
 		  	ll: req.params.id,
 		  	radius_filter: 800,
 		  	sort: sortNum,
@@ -208,7 +208,7 @@ router.get('/dinner/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ 	term: 'restaurants',
+		{ 	term: 'restaurants,dinner',
 		  	ll: req.params.id,
 		  	radius_filter: 800,
 		  	sort: sortNum,

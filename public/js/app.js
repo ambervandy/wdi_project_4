@@ -251,10 +251,6 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			self.brunch = response.data;
 			// add brunch to dayObj
 			dayObj.brunch = response.data;
-
-			// create single string for opentable link
-			nameBrunch = response.data.name.split(' ').join('-');
-			self.otBrunchLink = 'http://www.opentable.com/' + nameBrunch;
 		},
 		// error
 		function(err) {
@@ -299,10 +295,6 @@ app.controller('userController', ['$http', '$scope', function($http, $scope) {
 			self.dinner = response.data;
 			// add dinner to dayObj
 			dayObj.dinner = response.data;
-
-			// create single string for opentable link
-			nameDinner = response.data.name.split(' ').join('-');
-			self.otDinnerLink = 'http://www.opentable.com/' + nameDinner;
 		},
 		// error
 		function(err) {
