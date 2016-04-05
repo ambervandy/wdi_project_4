@@ -110,9 +110,9 @@ router.get('/brunch/:id', function(req, res) {
 
 	yelp.search(
 		// search params
-		{ 	term: 'breakfast_brunch,restaurants',
+		{ 	term: 'breakfast_brunch,restaurants,diners',
 		  	ll: req.params.id,
-		  	radius_filter: 800,
+		  	radius_filter: 1200,
 		  	sort: sortNum,
 		  	limit: 20 }
 		  // success
@@ -161,7 +161,7 @@ router.get('/drinks/:id', function(req, res) {
 		// search params
 		{ 	term: 'bars,pubs,lounges,restaurants',
 		  	ll: req.params.id,
-		  	radius_filter: 800,
+		  	radius_filter: 1200,
 		  	sort: sortNum,
 		  	limit: 20 }
 		  // success
@@ -210,7 +210,7 @@ router.get('/dinner/:id', function(req, res) {
 		// search params
 		{ 	term: 'restaurants,dinner',
 		  	ll: req.params.id,
-		  	radius_filter: 800,
+		  	radius_filter: 1200,
 		  	sort: sortNum,
 		  	limit: 20 }
 		  // success
